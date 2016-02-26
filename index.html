@@ -16,7 +16,7 @@
         height:40px;
         border-bottom:1px solid #eee;
         background:rgba(255,255,255,0.95);
-        position:absolute;
+        position:fixed;
         top:0;
         left:0;
         padding:15px 0;
@@ -53,6 +53,74 @@
     .main{
         padding-top:71px;
     }
+    .section{
+        width:980px;
+        margin:0 auto;
+    }
+    .section:nth-child(even){
+        background:#fafafa;
+    }
+    .section_header{
+        margin:30px 0;
+    }
+    .section_header h2{
+        font:25px "微软雅黑";
+        letter-spacing:8px;
+        text-align:center;
+    }
+    .tech_skill_list_item{
+        list-style:none;
+        height:40px;
+        line-height:40px;
+        padding-left:10px;
+        border-left:3px solid;
+        margin-bottom:10px;
+        animation-duration:1.5s;
+    }
+    .html{
+        color:#56574B;
+        border-color:#56574B;
+        background:#eeefd0;
+        width:80%;
+        animation-name:bar-html;
+    }
+    @keyframes bar-html{
+        0% {width:0;}
+        100% {width:80%;}
+    }
+    .css{
+        color:#5E532D;
+        border-color:#5E532D;
+        background:#F1D572;
+        width:60%;
+        animation-name:bar-css;
+    }
+    @keyframes bar-css{
+        0% {width:0;}
+        100% {width:60%;}
+    }
+    .js{
+        color:#344B52;
+        border-color:#344B52;
+        background:#5F8995;
+        width:40%;
+        animation-name:bar-js;
+    }
+    @keyframes bar-js{
+        0% {width:0;}
+        100% {width:40%;}
+    }
+    .ps{
+        color:#635153;
+        border-color:#635153;
+        background:#DAB1B5;
+        width:70%;
+        animation-name:bar-ps;
+    }
+    @keyframes bar-ps{
+        0% {width:0;}
+        100% {width:70%;}
+    }
     </style>
 </head>
 <body>
@@ -76,11 +144,19 @@
                 <h2>前端技术经验</h2>
             </header>
         <section class="section_body">
-            <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>Javascript</li>
-                <li>Photoshop</li>
+            <ul class="tech_skill_list">
+                <li class="tech_skill_list_item html">
+                    <h4>HTML</h4>
+                </li>
+                <li class="tech_skill_list_item css">
+                    <h4>CSS</h4>
+                </li>
+                <li class="tech_skill_list_item js">
+                    <h4>Javascript</h4>
+                </li>
+                <li class="tech_skill_list_item ps">
+                    <h4>Photoshop</h4>
+                </li>
             </ul>
         </section>
         </section>
