@@ -7,10 +7,12 @@
     <meta name="description" content="胡夏天的个人简历">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <style type="text/css">
+    /*重置默认边距*/
     *{
         margin:0;
         padding:0;
     }
+    /*头部设置*/
     .header{
         width:100%;
         height:40px;
@@ -50,15 +52,17 @@
         list-style:none;
         display:inline-block;
     }
+    /*主体设置*/
     .main{
         padding-top:71px;
     }
-    .section{
-        width:980px;
-        margin:0 auto;
-    }
+    /*章节设置*/
     .section:nth-child(even){
         background:#fafafa;
+    }
+    .bodundry{
+        width:980px;
+        margin:0 auto;
     }
     .section_header{
         margin:30px 0;
@@ -68,6 +72,7 @@
         letter-spacing:8px;
         text-align:center;
     }
+    /*技能列表设置*/
     .tech_skill_list_item{
         list-style:none;
         height:40px;
@@ -76,6 +81,12 @@
         border-left:3px solid;
         margin-bottom:10px;
         animation-duration:1.5s;
+        -ms-user-select:none;
+        -webkit-user-select:none;
+        -moz-user-select: -moz-none;
+    }
+    .tech_skill_list_item:hover{
+        cursor:default;
     }
     .html{
         color:#56574B;
@@ -121,6 +132,7 @@
         0% {width:0;}
         100% {width:70%;}
     }
+    /*教育经历设置*/
     </style>
 </head>
 <body>
@@ -140,25 +152,57 @@
     </header>
     <div class="main">
         <section class="section">
-            <header class="section_header">
-                <h2>前端技术经验</h2>
-            </header>
-        <section class="section_body">
-            <ul class="tech_skill_list">
-                <li class="tech_skill_list_item html">
-                    <h4>HTML</h4>
-                </li>
-                <li class="tech_skill_list_item css">
-                    <h4>CSS</h4>
-                </li>
-                <li class="tech_skill_list_item js">
-                    <h4>Javascript</h4>
-                </li>
-                <li class="tech_skill_list_item ps">
-                    <h4>Photoshop</h4>
-                </li>
-            </ul>
+            <div class="bodundry">
+                <header class="section_header">
+                    <h2>前端技术经验</h2>
+                </header>
+                <section class="section_body">
+                    <ul class="tech_skill_list">
+                        <li class="tech_skill_list_item html">
+                            <h4>HTML</h4>
+                        </li>
+                        <li class="tech_skill_list_item css">
+                            <h4>CSS</h4>
+                        </li>
+                        <li class="tech_skill_list_item js">
+                            <h4>Javascript</h4>
+                        </li>
+                        <li class="tech_skill_list_item ps">
+                            <h4>Photoshop</h4>
+                        </li>
+                    </ul>
+                </section>
+            </div>
         </section>
+        <section class="section">
+            <div class="bodundry">
+                <header class="section_header">
+                    <h2>教育经历</h2>
+                </header>
+                <section class="section_body">
+
+                </section>
+            </div>
+        </section>
+        <section class="section">
+            <div class="bodundry">
+                <header class="section_header">
+                    <h2>实践项目</h2>
+                </header>
+                <section class="section_body">
+
+                </section>
+            </div>
+        </section>
+        <section class="section">
+            <div class="bodundry">
+                <header class="section_header">
+                    <h2>学习方向</h2>
+                </header>
+                <section class="section_body">
+
+                </section>
+            </div>
         </section>
     </div>
 </body>
