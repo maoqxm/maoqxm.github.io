@@ -6,134 +6,7 @@
     <meta name="keywords" content="胡夏天，毛球，前端，简历，求职">
     <meta name="description" content="胡夏天的个人简历">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-    <style type="text/css">
-    /*重置默认边距*/
-    *{
-        margin:0;
-        padding:0;
-    }
-    /*头部设置*/
-    .header{
-        width:100%;
-        height:40px;
-        border-bottom:1px solid #eee;
-        background:rgba(255,255,255,0.95);
-        position:fixed;
-        top:0;
-        left:0;
-        padding:15px 0;
-    }
-    .header_title{
-        position:relative;
-        overflow:hidden;
-        margin:0 auto;
-        width:980px;
-    }
-    .title_description{
-        float:left;
-        height:40px;
-    }
-    .name{
-        font:31px/40px "微软雅黑";
-    }
-    .tag{
-        position:absolute;
-        bottom:0;
-        font:14px "微软雅黑";
-        margin-left:10px;
-        color:rgba(0, 0, 0, 0.7);
-    }
-    .title_contact ul{
-        position:absolute;
-        right:0;
-        bottom:0;
-    }
-    .title_contact li{
-        list-style:none;
-        display:inline-block;
-    }
-    /*主体设置*/
-    .main{
-        padding-top:71px;
-    }
-    /*章节设置*/
-    .section:nth-child(even){
-        background:#fafafa;
-    }
-    .bodundry{
-        width:980px;
-        margin:0 auto;
-    }
-    .section_header{
-        margin:30px 0;
-    }
-    .section_header h2{
-        font:25px "微软雅黑";
-        letter-spacing:8px;
-        text-align:center;
-    }
-    /*技能列表设置*/
-    .tech_skill_list_item{
-        list-style:none;
-        height:40px;
-        line-height:40px;
-        padding-left:10px;
-        border-left:3px solid;
-        margin-bottom:10px;
-        animation-duration:1.5s;
-        -ms-user-select:none;
-        -webkit-user-select:none;
-        -moz-user-select: -moz-none;
-    }
-    .tech_skill_list_item:hover{
-        cursor:default;
-    }
-    .html{
-        color:#56574B;
-        border-color:#56574B;
-        background:#eeefd0;
-        width:80%;
-        animation-name:bar-html;
-    }
-    @keyframes bar-html{
-        0% {width:0;}
-        100% {width:80%;}
-    }
-    .css{
-        color:#5E532D;
-        border-color:#5E532D;
-        background:#F1D572;
-        width:60%;
-        animation-name:bar-css;
-    }
-    @keyframes bar-css{
-        0% {width:0;}
-        100% {width:60%;}
-    }
-    .js{
-        color:#344B52;
-        border-color:#344B52;
-        background:#5F8995;
-        width:40%;
-        animation-name:bar-js;
-    }
-    @keyframes bar-js{
-        0% {width:0;}
-        100% {width:40%;}
-    }
-    .ps{
-        color:#635153;
-        border-color:#635153;
-        background:#DAB1B5;
-        width:70%;
-        animation-name:bar-ps;
-    }
-    @keyframes bar-ps{
-        0% {width:0;}
-        100% {width:70%;}
-    }
-    /*教育经历设置*/
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
     <header class="header">
@@ -143,9 +16,7 @@
             </div>
             <div class="title_contact">
                 <ul>
-                    <li class="tel">联系电话：18868100227</li>
-<li class="qq">QQ：392818909</li>
-<li class="mail">常用邮箱：392818909@qq.com</li>
+                    <li class="tel">联系电话：18868100227</li><li class="qq">QQ：392818909</li><li class="mail">常用邮箱：392818909@qq.com</li>
                 </ul>
             </div>
         </div>
@@ -156,7 +27,7 @@
                 <header class="section_header">
                     <h2>前端技术经验</h2>
                 </header>
-                <section class="section_body">
+                <div class="section_body">
                     <ul class="tech_skill_list">
                         <li class="tech_skill_list_item html">
                             <h4>HTML</h4>
@@ -171,7 +42,7 @@
                             <h4>Photoshop</h4>
                         </li>
                     </ul>
-                </section>
+                </div>
             </div>
         </section>
         <section class="section">
@@ -179,9 +50,20 @@
                 <header class="section_header">
                     <h2>教育经历</h2>
                 </header>
-                <section class="section_body">
-
-                </section>
+                <div class="section_body clearfix">
+                    <div class="edu edu_university">
+                        <a href="http://www.zju.edu.cn" target="_blank">
+                            <img src="image/ZheJiang University.png" alt="浙江大学" class="edu_logo">
+                        </a>
+                        <p>2012年9月至2016年6月在<strong>浙江大学</strong>修读<strong>资源环境科学（环境资源信息技术方向）</strong>专业,通过<strong>英语六级</strong>考试。</p>
+                    </div>
+                    <div class="edu edu_mooc">
+                        <a href="http://study.163.com/" target="_blank">
+                            <img src="image/网易云课堂.png" alt="网易云课堂" class="edu_logo">
+                        </a>
+                        <p>2015年12月开始参加<strong>网易前端微专业</strong>课程第三期，目前已完成五门课程的学习，并在进行大作业的制作。</p>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="section">
@@ -189,9 +71,9 @@
                 <header class="section_header">
                     <h2>实践项目</h2>
                 </header>
-                <section class="section_body">
+                <div class="section_body">
 
-                </section>
+                </div>
             </div>
         </section>
         <section class="section">
@@ -199,9 +81,9 @@
                 <header class="section_header">
                     <h2>学习方向</h2>
                 </header>
-                <section class="section_body">
+                <div class="section_body">
 
-                </section>
+                </div>
             </div>
         </section>
     </div>
