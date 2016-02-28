@@ -57,6 +57,13 @@ li{
     display:inline-block;
     margin-left:5px;
 }
+.title_contact a{
+    color:#035AA6;
+    text-decoration:none;
+}
+.title_contact a:hover{
+    text-decoration:underline;
+}
 /* 主体设置 */
 .main{
     padding-top:71px;
@@ -196,3 +203,14 @@ li{
     text-decoration:underline;
 }
 /* 学习方向设置 */
+.study_ul{
+    display:flex;
+    width:600px;
+    margin:0 auto;
+}
+.study img{
+    height:200px;
+}
+.study{
+    flex:1;
+}
