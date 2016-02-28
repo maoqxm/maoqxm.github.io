@@ -64,6 +64,22 @@ li{
 .title_contact a:hover{
     text-decoration:underline;
 }
+.title_contact_item{
+    padding-left:25px;
+    background:url(../image/sprite.png) no-repeat;
+    background-size:20px auto;
+    height:20px;
+    line-height:20px;
+}
+.tel{
+    background-position:0 0;
+}
+.github{
+    background-position:0 -40px;
+}
+.mail{
+    background-position:0 -80px;
+}
 /* 主体设置 */
 .main{
     padding-top:71px;
