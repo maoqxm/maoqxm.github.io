@@ -183,7 +183,7 @@ li{
 }
 /* 实践项目设置 */
 .project{
-    height:120px;
+    height:150px;
 }
 .project + .project{
     border-top:3px dashed #ccc;
