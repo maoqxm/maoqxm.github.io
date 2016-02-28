@@ -1,8 +1,13 @@
-/*重置默认边距*/
+/* 重置默认边距 */
 *{
     margin:0;
     padding:0;
 }
+li{
+    list-style:none;
+
+}
+/* 清除浮动 */
 .clearfix:after{
     display:block;
     overflow:hidden;
@@ -11,7 +16,7 @@
     visibility:hidden;
     content:'.';
 }
-/*头部设置*/
+/* 头部设置 */
 .header{
     width:100%;
     height:40px;
@@ -21,6 +26,7 @@
     top:0;
     left:0;
     padding:15px 0;
+    z-index:99999;
 }
 .header_title{
     position:relative;
@@ -48,15 +54,14 @@
     bottom:0;
 }
 .title_contact li{
-    list-style:none;
     display:inline-block;
     margin-left:5px;
 }
-/*主体设置*/
+/* 主体设置 */
 .main{
     padding-top:71px;
 }
-/*章节设置*/
+/* 章节设置 */
 .section:nth-child(even){
     background:#fafafa;
 }
@@ -73,7 +78,7 @@
     letter-spacing:8px;
     text-align:center;
 }
-/*技能列表设置*/
+/* 技能列表设置 */
 .tech_skill_list_item{
     list-style:none;
     height:40px;
@@ -134,7 +139,7 @@
     0% {width:0;}
     100% {width:70%;}
 }
-/*教育经历设置*/
+/* 教育经历设置 */
 .edu{
     width:50%;
     float:left;
@@ -169,3 +174,25 @@
 .edu_mooc p{
     margin-left:190px;
 }
+/* 实践项目设置 */
+.project{
+    height:120px;
+}
+.project + .project{
+    border-top:3px dashed #ccc;
+}
+.project h3{
+    margin:20px 0;
+    font:20px "微软雅黑";
+}
+.project_link{
+    margin:10px 0;
+}
+.project a{
+    color:#035AA6;
+    text-decoration:none;
+}
+.project a:hover{
+    text-decoration:underline;
+}
+/* 学习方向设置 */
