@@ -41,6 +41,6 @@ noRemind.addEventListener('click', function(){
 // 查询是否已有noRemind的cookie
 var tip = document.getElementById("tip");
 var mycookie = getcookie();
-if (mycookie.noRemind]) {
+if (mycookie.noRemind) {
     tip.style.display = "none";
 }
