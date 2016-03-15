@@ -207,12 +207,13 @@ li{
 }
 .project h3{
     margin:20px 0;
-    font:20px "微软雅黑";
+    font:bold 20px "微软雅黑";
 }
 .project_link{
     margin:10px 0;
 }
 .project a{
+    font: bold 16px "微软雅黑";
     color:#035AA6;
     text-decoration:none;
 }
