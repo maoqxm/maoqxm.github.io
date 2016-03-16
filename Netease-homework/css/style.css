@@ -21,6 +21,68 @@ li{
     margin: 0 auto;
     height: 100%;
 }
+#login{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: none;
+}
+#login_panel{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 387px;
+    height: 288px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px 52px 40px 40px;
+}
+#login_panel_cancel{
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    background: url(../icon/登陆关闭.png) no-repeat 0 0;
+}
+#login_panel_cancel:hover{
+    cursor: pointer;
+}
+#login_panel h3{
+    font: 18px "微软雅黑";
+}
+#login_panel input{
+    box-sizing: border-box;
+    width: 100%;
+    height: 45px;
+    border: 1px solid #dfdfdf;
+    box-shadow: 2px 2px #f1f1f1 inset;
+    padding-left: 10px;
+    background-color: #fafafa;
+}
+#login_panel #account{
+    margin: 20px 0 15px 0;
+}
+#login_panel #password{
+    margin-bottom: 30px;
+}
+#login_panel #submit{
+    width: 293px;
+    height: 46px;
+    background-color: #1aa43a;
+    color: white;
+    text-align: center;
+    font: 16px/46px "微软雅黑";
+    border: none;
+    box-shadow: 2px 2px #d5e3da;
+}
+#login_panel #submit:hover{
+    cursor: pointer;
+}
 #tip{
     height:36px;
     background:#f3f3f3;
@@ -113,6 +175,7 @@ li{
 #banner{
     position: relative;
     overflow: hidden;
+    height: 100%;
 }
 #list img{
     width:100%;

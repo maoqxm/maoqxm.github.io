@@ -11,7 +11,7 @@ function hasClass(obj, cls){
 }
 // 增加cls类
 function addClass(obj, cls){
-    if (!hasClass(obj,cls)){
+    if (!hasClass(obj,cls)) {
         obj.className += ' ' + cls;
     }
 }
@@ -33,7 +33,7 @@ function changeTo(num){
 }
 // 小圆点点击事件监听
 function indexClick(){
-    for (i = 0; i < imgLen; i++){
+    for (i = 0; i < imgLen; i++) {
         (function(_i){
             indexArr[_i].addEventListener('click', function(){
                 changeTo(_i);
@@ -68,9 +68,9 @@ window.onload = function(){
     banner.addEventListener('mouseover', stop, false);
     banner.addEventListener('mouseout', function(){
         autoChange = setInterval(function(){
-            if(curIndex < imgLen - 1){
+            if (curIndex < imgLen - 1) {
                 curIndex++;
-            }else{
+            }else {
                 curIndex = 0;
             }
             changeTo(curIndex);
