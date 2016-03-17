@@ -65,8 +65,6 @@ var login_panel_cancel = document.getElementById("login_panel_cancel");
 var login = document.getElementById("login");
 var focus_btn = document.getElementById("focus_btn");
 var focused_btn = document.getElementById("focused_btn");
-var account = document.getElementById("account").value;
-var password = document.getElementById("password").value;
 var submit = document.getElementById("submit");
 // 点击关注，判断是否已登录，未登陆则打开登陆页面
 focus_btn.addEventListener('click', function(){
@@ -77,25 +75,25 @@ login_panel_cancel.addEventListener('click', function(){
     login.style.display = "none";
 },false)
 submit.addEventListener('click', function(){
+    var account = document.getElementById("account").value;
+    var password = document.getElementById("password").value;
     if (!account || !password) {
         alert("请正确填写账号或密码");
     } else {
         ajaxOnsuccess = function(rText){
-            if (rText === 1) {
-                setCookie(loginSuc, '1', 1);
+            if (rText === "1") {
+                setCookie("loginSuc", '1', 1);
                 login.style.display = "none";
-                successFollow();
+                //successFollow();
                 alert('登陆成功');
             } else {
                 alert('用户名或密码错误，请重新输入');
-                account = '';
-                password = '';
             }
         };
         options = {
             url: 'http://study.163.com/webDev/login.htm',
             data: {
-                userName: md5(userName),
+                userName: md5(account),
                 password: md5(password)
             },
             onsuccess: ajaxOnsuccess
