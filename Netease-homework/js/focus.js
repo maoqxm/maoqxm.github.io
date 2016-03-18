@@ -65,16 +65,27 @@ var login_panel_cancel = document.getElementById("login_panel_cancel");
 var login = document.getElementById("login");
 var focus_btn = document.getElementById("focus_btn");
 var focused_btn = document.getElementById("focused_btn");
+var focused_btn_cancel = document.getElementById("focused_btn_cancel");
 var submit = document.getElementById("submit");
+// 关注成功操作
+ function successFollow(){
+    focus_btn.style.display = "none";
+    focused_btn.style.display = "inline-block";
+ }
+ // 取消关注
+ function unFollow(){
+    focused_btn.style.display = "none";
+    focus_btn.style.display = "inline-block";
+ }
 // 点击关注，判断是否已登录，未登陆则打开登陆页面
 focus_btn.addEventListener('click', function(){
     if (!mycookie.loginSuc) {
         login.style.display = "block";
     } else {
-        focus_btn.style.display = "none";
-        focused_btn.style.display = "inline-block";
+        successFollow();
     }
 },false);
+focused_btn_cancel.addEventListener('click', unFollow, false);
 // 点击登陆面板的取消按钮，关闭面板
 login_panel_cancel.addEventListener('click', function(){
     login.style.display = "none";
@@ -90,7 +101,7 @@ submit.addEventListener('click', function(){
             if (rText === "1") {
                 setCookie("loginSuc", '1', 1);
                 login.style.display = "none";
-                //successFollow();
+                successFollow();
                 alert('登陆成功');
             } else {
                 alert('用户名或密码错误，请重新输入');
