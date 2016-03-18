@@ -62,7 +62,7 @@ var autoChange = setInterval(function(){
     changeTo(curIndex);
 }, 5000);
 
-window.onload = function(){
+(function(){
     bannerHeight();
     indexClick();
     banner.addEventListener('mouseover', stop, false);
@@ -77,4 +77,4 @@ window.onload = function(){
         },5000);
     }, false);
     window.addEventListener('resize',bannerHeight,false);
-}
+})()

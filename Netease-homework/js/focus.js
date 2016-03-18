@@ -68,6 +68,7 @@ var focused_btn = document.getElementById("focused_btn");
 var submit = document.getElementById("submit");
 // 点击关注，判断是否已登录，未登陆则打开登陆页面
 focus_btn.addEventListener('click', function(){
+    if (loginSuc)
     login.style.display = "block";
 },false);
 // 点击登陆面板的取消按钮，关闭面板
