@@ -1,7 +1,7 @@
 /* reset */
 *{
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 body{
     font-family: Helvetica, Arial, "Microsoft Yahei";
@@ -84,8 +84,8 @@ li{
     cursor: pointer;
 }
 #tip{
-    height:36px;
-    background:#f3f3f3;
+    height: 36px;
+    background: #f3f3f3;
 }
 #tip span{
     font: 12px/36px "微软雅黑";
@@ -104,7 +104,7 @@ li{
 }
 #navigation .title{
     float: left;
-    margin-right:30px;
+    margin-right: 30px;
     font-size: 22px;
 }
 #title_en{
@@ -178,11 +178,11 @@ li{
     height: 100%;
 }
 #list img{
-    width:100%;
+    width: 100%;
 }
 #list li{
     position: absolute;
-    width:100%;
+    width: 100%;
     opacity: 0;
     transition: opacity .5s ease-in-out;
 }
@@ -212,7 +212,7 @@ li{
     cursor: pointer;
 }
 #product{
-    height:300px;
+    height: 300px;
 }
 #product ul{
     height: 100%;
@@ -245,7 +245,7 @@ li{
 }
 #product p{
     font-size: 14px;
-    margin:20px 0 30px 0;
+    margin: 20px 0 30px 0;
     color: #666;
 }
 #product a:hover{
@@ -261,7 +261,61 @@ li{
     margin-left: 0.25%;
 }
 #content{
-    height:1550px;
+    height: 1550px;
+}
+#content .main{
+    padding: 80px 0 120px 0;
+    position: relative;
+}
+#content .tab{
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    color: #666;
+    background-color: white;
+    font: 20px/50px "微软雅黑";
+    text-align: center;
+    box-shadow: 0 1px 3px #d4d3d3;
+}
+#content .tab.active{
+    background-color: #39a030;
+    color: white;
+}
+#content #sidebar{
+    position: absolute;
+    top: 80px;
+    right: 0;
+}
+#sidebar #intro{
+    width: 223px;
+    height: 229px;
+    background-color: white;
+    box-shadow: 0 1px 3px #d4d3d3;
+}
+#sidebar h3{
+    box-sizing: border-box;
+    width: 100%;
+    height: 57px;
+    padding: 0 20px;
+    border-bottom: 1px solid #ddd;
+    font: 16px/56px "微软雅黑";
+}
+#intro_video{
+    padding: 20px;
+    font: 14px "微软雅黑";
+}
+#intro_video p{
+    margin-bottom: 10px;
+}
+#sidebar #hot{
+    width: 223px;
+    height: 761px;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 1px 3px #d4d3d3;
+}
+#hot_list{
+    padding: 20px;
 }
 #footer{
     height:262px;
