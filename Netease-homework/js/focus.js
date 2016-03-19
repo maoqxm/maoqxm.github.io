@@ -118,3 +118,51 @@ submit.addEventListener('click', function(){
         ajax(options);
     }
 },false)
+
+// 打乱数组
+function shuffle(arr){
+    var curIndex = arr.length;
+    var tmpValue;
+    var randomIndex;
+    var resultArr = [];
+
+    while (curIndex != 0) {
+        randomIndex = Math.floor(Math.random() * curIndex);
+        curIndex--;
+        tmpValue = arr[curIndex];
+        arr[curIndex] = arr[randomIndex];
+        arr[randomIndex] = tmpValue;
+    }
+
+    return arr;
+}
+
+// Ajax动态加载最热排行模块
+var getHotList = (function(){
+    var ajaxOnsuccess = function(rText){
+        var hotLists = [];
+        var lenOfItems = 10;
+        var ulOfHot = document.getElementById("hot_list");
+
+        hotLists = shuffle(JSON.parse(rText));
+        var segment = '';
+
+        for (i = lenOfItems - 1; i >= 0; i--) {
+            segment +=
+            '<li class="hot_list_item">\
+                <div class="hot_img_wrapper">\
+                    <img src=' + hotLists[i].smallPhotoUrl + '>\
+                </div>\
+                <h4>' + hotLists[i].name + '</h4>\
+                <div class="hot_num_wrapper">' + hotLists[i].learnerCount + '</div>\
+            </li>';
+        }
+        ulOfHot.innerHTML = segment;
+    };
+
+    var options = {
+        url: "http://study.163.com/webDev/hotcouresByCategory.htm",
+        onsuccess: ajaxOnsuccess
+    }
+    ajax(options);
+})();
