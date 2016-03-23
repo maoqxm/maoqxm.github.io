@@ -62,6 +62,9 @@ var ajax = function(options){
 }
 
 var login_panel_cancel = document.getElementById("login_panel_cancel");
+var video_panel_cancel = document.getElementById("video_panel_cancel");
+var videoMask = document.getElementById("videoMask");
+var video_thumbnail = document.getElementById("video_thumbnail");
 var login = document.getElementById("login");
 var focus_btn = document.getElementById("focus_btn");
 var focused_btn = document.getElementById("focused_btn");
@@ -85,11 +88,20 @@ focus_btn.addEventListener('click', function(){
         successFollow();
     }
 },false);
+// 点击取消关注
 focused_btn_cancel.addEventListener('click', unFollow, false);
 // 点击登陆面板的取消按钮，关闭面板
 login_panel_cancel.addEventListener('click', function(){
     login.style.display = "none";
-},false)
+},false);
+// 视频取消按钮
+video_panel_cancel.addEventListener('click', function(){
+    videoMask.style.display = "none";
+}, false);
+// 打开视频
+video_thumbnail.addEventListener('click', function(){
+    videoMask.style.display = "block";
+}, false);
 // 登陆框提交监听
 submit.addEventListener('click', function(){
     var account = document.getElementById("account").value;
@@ -164,5 +176,46 @@ var getHotList = (function(){
         url: "http://study.163.com/webDev/hotcouresByCategory.htm",
         onsuccess: ajaxOnsuccess
     }
+    ajax(options);
+})();
+
+// Ajax加载课程列表
+var getCourseList = (function(){
+    var ajaxOnsuccess = function(rText){
+        var courseLists = [];
+        var lenOfItems = 20;
+        var ulOfCourse = document.getElementById("course_list");
+
+        courseLists = JSON.parse(rText);
+        var segment = '';
+
+        for (i = 0; i < lenOfItems; i++) {
+            segment +=
+            '<li class="course_list_item">\
+                <div class="course_img_wrapper">\
+                    <img src=' + courseLists.list[i].bigPhotoUrl + '>\
+                </div>\
+                <div class="course_details">\
+                    <h4 class="course_name">' + courseLists.list[i].name + '</h4>\
+                    <h4 class="course_provider">' + courseLists.list[i].provider + '</h4>\
+                    <div class="course_num_wrapper">' + courseLists.list[i].learnerCount + '</div>\
+                    <h4 class="course_price"> ￥ ' + courseLists.list[i].price + '</h4>\
+                </div>\
+            </li>';
+        }
+        ulOfCourse.innerHTML = segment;
+    };
+
+    var options = {
+        url: "http://study.163.com/webDev/couresByCategory.htm",
+        type: 'get',
+        data: {
+            pageNo: '1',
+            psize: '20',
+            type: '10'
+        },
+        onsuccess: ajaxOnsuccess
+    }
+
     ajax(options);
 })();
