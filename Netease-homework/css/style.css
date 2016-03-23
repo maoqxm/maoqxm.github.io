@@ -305,6 +305,9 @@ li{
     text-align: center;
     box-shadow: 0 1px 3px #d4d3d3;
 }
+#content .tab:hover{
+    cursor: pointer;
+}
 #content .tab.active{
     background-color: #39a030;
     color: white;
@@ -320,6 +323,7 @@ li{
     margin-right: 20px;
     margin-bottom: 20px;
     background-color: #fff;
+    box-shadow: 0 1px 3px #d4d3d3;
 }
 .course_img_wrapper{
     width: 223px;

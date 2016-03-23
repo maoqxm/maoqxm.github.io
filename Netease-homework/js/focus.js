@@ -178,9 +178,16 @@ var getHotList = (function(){
     }
     ajax(options);
 })();
-
-// Ajax加载课程列表
-var getCourseList = (function(){
+/*
+Ajax加载课程列表方法
+参数说明：
+pageNo：             请求页数
+psize：              每页返回总数
+type：               课程类型
+startPageIndex：     位于第一个分页号的页数
+currentPageIndex：   可选参数，动态生成分页导航后处于active状态的分页号页数
+*/
+var getCourseList = function(pageNo, psize, type, startPageIndex, currentPageIndex){
     var ajaxOnsuccess = function(rText){
         var courseLists = [];
         var lenOfItems = 20;
@@ -212,10 +219,39 @@ var getCourseList = (function(){
         data: {
             pageNo: '1',
             psize: '20',
-            type: '10'
+            type: type
         },
         onsuccess: ajaxOnsuccess
     }
 
     ajax(options);
+};
+getCourseList(1,20,10);
+
+var tabSwitch = (function(){
+    var tab_btn = document.getElementById("tab_btn");
+    var tab_items = tab_btn.getElementsByClassName("tab");
+    var len = tab_items.length;
+    var currentTabIndex;
+
+    tab_btn.addEventListener('click', function(e){
+        for (var i = 0; i < len; i++) {
+            if (hasClass(tab_items[i], 'active')) {
+                currentTabIndex = i;
+                break;
+            }
+        }
+        for (var i = 0; i < len; i++) {
+            if (tab_items[i].contains(e.target)) {
+                if (currentTabIndex == i) {
+                    break;
+                } else {
+                    var type = tab_items[i].dataset.type;
+                    getCourseList(1, 20, type);
+                    removeClass(tab_items[currentTabIndex], 'active');
+                    addClass(tab_items[i], 'active');
+                }
+            }
+        }
+    },false)
 })();
