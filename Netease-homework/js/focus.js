@@ -178,15 +178,38 @@ var getHotList = (function(){
     }
     ajax(options);
 })();
+
+// 分页导航生成器
+var createPageNav = function(startPageIndex, currentItemIndex, size){
+    var pageNav_btn = document.getElementById('pageNav_btn');
+    var last_page_btn_tmpl = '<li class="last_page"><</li>';
+    var next_page_btn_tmpl = '<li class="next_page">></li>';
+    var pageNav_items = '';
+    size = startPageIndex + size > totalPageCount? totalPageCount - startPageIndex + 1 : 8;
+
+    pageNav_items += last_page_btn_tmpl;
+    for (var i = 0; i < size; i++) {
+        var pageIndexValue = startPageIndex + i;
+        pageNav_items += '<li class="pageNav_item">' + pageIndexValue + '</li>';
+    }
+    pageNav_items += next_page_btn_tmpl;
+    pageNav_btn.innerHTML = pageNav_items;
+    var pageNav_item = pageNav_btn.getElementsByClassName("pageNav_item");
+    var len = pageNav_item.length;
+    var targetItem = pageNav_item[currentItemIndex] ? pageNav_item[currentItemIndex] : pageNav_item[len - 1];
+    addClass(targetItem, 'active');
+}
+
 /*
 Ajax加载课程列表方法
 参数说明：
 pageNo：             请求页数
 psize：              每页返回总数
 type：               课程类型
-startPageIndex：     位于第一个分页号的页数
+startPageIndex：     可选参数，位于第一个分页号的页数
 currentPageIndex：   可选参数，动态生成分页导航后处于active状态的分页号页数
 */
+var totalPageCount;
 var getCourseList = function(pageNo, psize, type, startPageIndex, currentPageIndex){
     var ajaxOnsuccess = function(rText){
         var courseLists = [];
@@ -196,7 +219,7 @@ var getCourseList = function(pageNo, psize, type, startPageIndex, currentPageInd
         courseLists = JSON.parse(rText);
         var segment = '';
 
-        for (i = 0; i < lenOfItems; i++) {
+        for (i = 0; i < lenOfItems ; i++) {
             segment +=
             '<li class="course_list_item">\
                 <div class="course_img_wrapper">\
@@ -211,14 +234,22 @@ var getCourseList = function(pageNo, psize, type, startPageIndex, currentPageInd
             </li>';
         }
         ulOfCourse.innerHTML = segment;
+        var currentIndex;
+        if (typeof currentPageIndex != 'undefined') {
+            currentIndex = currentPageIndex;
+        } else {
+            currentIndex = pageNo - 1;
+        }
+        createPageNav(startPageIndex, currentIndex, 8);
+        totalPageCount = courseLists.pagination.totlePageCount;
     };
 
     var options = {
         url: "http://study.163.com/webDev/couresByCategory.htm",
         type: 'get',
         data: {
-            pageNo: '1',
-            psize: '20',
+            pageNo: pageNo,
+            psize: psize,
             type: type
         },
         onsuccess: ajaxOnsuccess
@@ -226,8 +257,37 @@ var getCourseList = function(pageNo, psize, type, startPageIndex, currentPageInd
 
     ajax(options);
 };
-getCourseList(1,20,10);
+getCourseList(1, 20, 10, 1);
 
+// 分页器切换模块
+var pageNavSwitch = (function(){
+    var pageNav_btn = document.getElementById("pageNav_btn");
+    pageNav_btn.addEventListener('click', function(e){
+        var targetIndex = e.target.innerHTML;
+        var pageNav_item = pageNav_btn.getElementsByClassName("pageNav_item");
+        var currentStartPageIndex = parseInt(pageNav_item[0].innerHTML);
+        var currentEndPageIndex = parseInt(pageNav_item[pageNav_item.length - 1].innerHTML);
+        var currentType = document.getElementById("tab_btn").getElementsByClassName("active")[0].dataset.type;
+        var currentPageIndex = parseInt(pageNav_btn.getElementsByClassName("active")[0].innerHTML);
+
+        if (hasClass(e.target, 'pageNav_item')) {
+            getCourseList(targetIndex, 20, currentType, currentStartPageIndex, targetIndex % 8 - 1 == -1 ? 7 : targetIndex % 8 - 1);
+        } else if (hasClass(e.target, 'last_page')) {
+            if (currentStartPageIndex > 8) {
+                var newStartPageIndex = currentStartPageIndex - 8;
+                targetIndex = currentPageIndex - 8;
+                getCourseList(targetIndex, 20, currentType, newStartPageIndex, targetIndex % 8 - 1 == -1 ? 7 : targetIndex % 8 - 1);
+            }
+        } else if (hasClass(e.target, 'next_page')) {
+            var newStartPageIndex = currentStartPageIndex + 8;
+            targetIndex = currentPageIndex + 8;
+            getCourseList(targetIndex, 20, currentType, newStartPageIndex, targetIndex % 8 - 1 == -1 ? 7 : targetIndex % 8 - 1);
+        }
+
+    },false)
+})();
+
+// Tab切换模块
 var tabSwitch = (function(){
     var tab_btn = document.getElementById("tab_btn");
     var tab_items = tab_btn.getElementsByClassName("tab");
@@ -247,7 +307,7 @@ var tabSwitch = (function(){
                     break;
                 } else {
                     var type = tab_items[i].dataset.type;
-                    getCourseList(1, 20, type);
+                    getCourseList(1, 20, type, 1);
                     removeClass(tab_items[currentTabIndex], 'active');
                     addClass(tab_items[i], 'active');
                 }
