@@ -4,6 +4,7 @@
     padding: 0;
 }
 body{
+    width: 100%;
     font-family: Helvetica, Arial, "Microsoft Yahei";
 }
 a{
@@ -96,13 +97,13 @@ li{
     padding-left: 10px;
     background-color: #fafafa;
 }
-#login_panel #account{
+#account{
     margin: 20px 0 15px 0;
 }
-#login_panel #password{
+#password{
     margin-bottom: 30px;
 }
-#login_panel #submit{
+#submit{
     width: 293px;
     height: 46px;
     background-color: #1aa43a;
@@ -112,7 +113,7 @@ li{
     border: none;
     box-shadow: 2px 2px #d5e3da;
 }
-#login_panel #submit:hover{
+#submit:hover{
     cursor: pointer;
 }
 #tip{
@@ -122,10 +123,10 @@ li{
 #tip span{
     font: 12px/36px "微软雅黑";
 }
-#tip #tip_noremind{
+#tip_noremind{
     float: right;
 }
-#tip #tip_noremind:hover{
+#tip_noremind:hover{
     cursor: pointer;
 }
 #navigation{
