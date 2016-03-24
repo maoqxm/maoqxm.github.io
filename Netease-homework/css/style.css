@@ -325,13 +325,6 @@ li{
     background-color: #fff;
     box-shadow: 0 1px 3px #d4d3d3;
 }
-.course_list_item:hover{
-    cursor: pointer;
-    box-shadow: 1px 1px 2px 2px #cecece;
-}
-.course_list_item:hover .course_name{
-    color: #39a030;
-}
 .course_img_wrapper{
     width: 223px;
     height: 124px;
@@ -364,42 +357,11 @@ li{
     padding-right:3px;
     margin-top: 8px;
     background: url(../icon/人像.png) no-repeat 3px 2px;
-    border-radius: 2px;
 }
 .course_price{
     font: 12px "微软雅黑";
     color: #ff3f00;
     margin-top: 8px;
-}
-#pageNav_btn{
-    float: right;
-    margin-right: 246px;
-    margin-top: 20px;
-}
-#pageNav_btn li{
-    display: inline-block;
-    margin-left: 10px;
-    font: 14px "微软雅黑";
-    cursor: pointer;
-}
-.last_page, .next_page{
-    width: 30px;
-    height: 20px;
-    background-color: #9dd8b1;
-    color: white;
-    text-align: center;
-}
-.pageNav_item{
-    width: 20px;
-    height: 20px;
-    text-align: center;
-}
-#pageNav_btn .pageNav_item:hover{
-    background-color: #9dd8b1;
-    color: white;
-}
-.pageNav_item.active{
-    color: #9dd8b1;
 }
 #content #sidebar{
     position: absolute;
