@@ -4,7 +4,6 @@
     padding: 0;
 }
 body{
-    width: 100%;
     font-family: Helvetica, Arial, "Microsoft Yahei";
 }
 a{
@@ -20,7 +19,7 @@ li{
 
 /* initialize */
 .main{
-    width: 1206px;
+    width: 75%;
     margin: 0 auto;
     height: 100%;
 }
@@ -254,23 +253,21 @@ li{
     float: left;
     display: inline-block;
     box-sizing: border-box;
-    width: 350px;
+    width: 33%;
     height: 300px;
     padding: 60px 0;
 }
-#product li + li{
+/* #product li + li{
     margin-left: 78px;
-}
+} */
 #product .product img{
     float: left;
-    width: 80px;
-    height: 80px;
+    width: 23%;
     margin:5px 0 0 5px;
 }
 #product .intro{
-    margin-left: 105px;
-    overflow: hidden;
-    width: 245px;
+    margin-left: 30%;
+    width: 70%;
 }
 #product h3{
     font-size: 22px;
@@ -320,10 +317,11 @@ li{
 #course{
     height: 1270px;
     margin-top: 30px;
+    margin-right: 246px;
 }
 .course_list_item{
     display: inline-block;
-    width: 225px;
+    width: 23%;
     height: 228px;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -378,7 +376,7 @@ li{
 }
 #pageNav_btn{
     float: right;
-    margin-right: 246px;
+    margin-right: 30px;
     margin-top: 20px;
 }
 #pageNav_btn li{
