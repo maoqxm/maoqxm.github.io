@@ -19,7 +19,7 @@ li{
 
 /* initialize */
 .main{
-    width: 75%;
+    width: 1206px;
     margin: 0 auto;
     height: 100%;
 }
@@ -319,6 +319,7 @@ li{
 #course{
     height: 1270px;
     margin-top: 30px;
+    margin-right: 223px;
 }
 .course_list_item{
     display: inline-block;
@@ -377,7 +378,7 @@ li{
 }
 #pageNav_btn{
     float: right;
-    margin-right: 246px;
+    margin-right: 20px;
     margin-top: 20px;
 }
 #pageNav_btn li{
