@@ -4,7 +4,6 @@
     padding: 0;
 }
 body{
-    width: 100%;
     font-family: Helvetica, Arial, "Microsoft Yahei";
 }
 a{
@@ -222,26 +221,26 @@ li{
 #list .show{
     opacity: 1;
 }
-#banner #pointer{
+#pointer{
     position: absolute;
     left: 50%;
     bottom: 20px;
     transform: translate(-50%,0);
 }
-#banner #pointer li{
+#pointer li{
     display: inline-block;
     width: 10px;
     height: 10px;
     background-color: white;
     border-radius: 50%;
 }
-#banner #pointer .active{
+#pointer .active{
     background-color: black;
 }
-#banner #pointer li+li{
+#pointer li+li{
     margin-left: 10px;
 }
-#banner #pointer li:hover{
+#pointer li:hover{
     cursor: pointer;
 }
 #product{
@@ -406,12 +405,12 @@ li{
 .pageNav_item.active{
     color: #9dd8b1;
 }
-#content #sidebar{
+#sidebar{
     position: absolute;
     top: 80px;
     right: 0;
 }
-#sidebar #intro{
+#intro{
     width: 223px;
     height: 229px;
     background-color: white;
