@@ -62,6 +62,164 @@ function getcookie (){
     }
     return cookie;
 }
+/*
+封装Ajax方法
+参数说明：
+参数为对象，可包括的参数为：
+    url：请求地址
+    type：默认为get
+    data：发送的数据，一个键值对象或用&连接的赋值字符串
+    onsuccess：成功时的调用函数
+    onfail：失败时的调用函数
+*/
+var ajax = function(options){
+    var xhr = new XMLHttpRequest();
+    var method, queryString = '', requestURL = options.url;
+    var keyValuePairs = [];
+
+    requestURL += (requestURL.indexOf('?') == -1 ? '?' : '&');
+    method = options.type ? options.type : 'get';
+
+    // 处理传入的参数，编码并链接
+    if (options.data) {
+        if (typeof options.data == 'string') {
+            queryString = options.data;
+            requestURL += queryString;
+        } else {
+            for (var p in options.data){
+                if (options.data.hasOwnProperty(p)) {
+                    var key = encodeURIComponent(p);
+                    var value = encodeURIComponent(options.data[p]);
+                    keyValuePairs.push(key + '=' + value);
+                }
+            }
+            queryString = keyValuePairs.join('&');
+            requestURL += queryString;
+        }
+    }
+
+    // 回调操作
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4) {
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+                options.onsuccess(xhr.responseText);
+            } else {
+                if (options.onfail) {
+                    options.onfail();
+                } else {
+                    alert('Sorry, your request is unsuccessful:' + xhr.statusText);
+                }
+            }
+        }
+    }
+
+    // 发起请求
+    if (method == 'get') {
+        xhr.open(method, requestURL, true);
+        xhr.send();
+    } else {
+        xhr.open(method, url, true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(queryString);
+    }
+
+}
+/*
+Ajax加载课程列表方法
+参数说明：
+pageNo：             请求页数
+psize：              每页返回总数
+type：               课程类型
+startPageIndex：     可选参数，位于第一个分页号的页数
+currentPageIndex：   可选参数，动态生成分页导航后处于active状态的分页号页数
+
+外面放一个totalPageCount用在分页器的边界判定
+*/
+var totalPageCount;
+var getCourseList = function(pageNo, psize, type, startPageIndex, currentPageIndex){
+    var ajaxOnsuccess = function(rText){
+        var courseLists = [];
+        var lenOfItems = 20;
+        var ulOfCourse = document.querySelector("#course_list");
+
+        courseLists = JSON.parse(rText);
+        var segment = '';
+
+        for (i = 0; i < lenOfItems ; i++) {
+            segment +=
+            '<li class="course_list_item">\
+                <div class="course_img_wrapper">\
+                    <img src=' + courseLists.list[i].bigPhotoUrl + '>\
+                </div>\
+                <div class="course_details">\
+                    <h4 class="course_name">' + courseLists.list[i].name + '</h4>\
+                    <h4 class="course_provider">' + courseLists.list[i].provider + '</h4>\
+                    <div class="course_num_wrapper">' + courseLists.list[i].learnerCount + '</div>\
+                    <h4 class="course_price"> ￥ ' + courseLists.list[i].price + '</h4>\
+                </div>\
+            </li>';
+        }
+        ulOfCourse.innerHTML = segment;
+        var currentIndex;
+        if (typeof currentPageIndex != 'undefined') {
+            currentIndex = currentPageIndex;
+        } else {
+            currentIndex = pageNo - 1;
+        }
+        createPageNav(startPageIndex, currentIndex, 8);
+        totalPageCount = courseLists.pagination.totlePageCount;
+    };
+
+    var options = {
+        url: "http://study.163.com/webDev/couresByCategory.htm",
+        type: 'get',
+        data: {
+            pageNo: pageNo,
+            psize: psize,
+            type: type
+        },
+        onsuccess: ajaxOnsuccess
+    }
+
+    ajax(options);
+};
+// 分页导航生成器
+var createPageNav = function(startPageIndex, currentItemIndex, size){
+    var pageNav_btn = document.querySelector('#pageNav_btn');
+    var last_page_btn_tmpl = '<li class="last_page"><</li>';
+    var next_page_btn_tmpl = '<li class="next_page">></li>';
+    var pageNav_items = '';
+    size = startPageIndex + size > totalPageCount? totalPageCount - startPageIndex + 1 : 8;
+
+    pageNav_items += last_page_btn_tmpl;
+    for (var i = 0; i < size; i++) {
+        var pageIndexValue = startPageIndex + i;
+        pageNav_items += '<li class="pageNav_item">' + pageIndexValue + '</li>';
+    }
+    pageNav_items += next_page_btn_tmpl;
+    pageNav_btn.innerHTML = pageNav_items;
+    var pageNav_item = pageNav_btn.querySelectorAll(".pageNav_item");
+    var len = pageNav_item.length;
+    var targetItem = pageNav_item[currentItemIndex] ? pageNav_item[currentItemIndex] : pageNav_item[len - 1];
+    addClass(targetItem, 'active');
+}
+// 打乱数组（用于热门列表）
+function shuffle(arr){
+    var curIndex = arr.length;
+    var tmpValue;
+    var randomIndex;
+    var resultArr = [];
+
+    while (curIndex != 0) {
+        randomIndex = Math.floor(Math.random() * curIndex);
+        curIndex--;
+        tmpValue = arr[curIndex];
+        arr[curIndex] = arr[randomIndex];
+        arr[randomIndex] = tmpValue;
+    }
+
+    return arr;
+}
 
 // 兼容
 
@@ -142,68 +300,7 @@ if (mycookie.noRemind) {
 }
 
 
-/*
-封装Ajax方法
-参数说明：
-参数为对象，可包括的参数为：
-    url：请求地址
-    type：默认为get
-    data：发送的数据，一个键值对象或用&连接的赋值字符串
-    onsuccess：成功时的调用函数
-    onfail：失败时的调用函数
-*/
-var ajax = function(options){
-    var xhr = new XMLHttpRequest();
-    var method, queryString = '', requestURL = options.url;
-    var keyValuePairs = [];
 
-    requestURL += (requestURL.indexOf('?') == -1 ? '?' : '&');
-    method = options.type ? options.type : 'get';
-
-    // 处理传入的参数，编码并链接
-    if (options.data) {
-        if (typeof options.data == 'string') {
-            queryString = options.data;
-            requestURL += queryString;
-        } else {
-            for (var p in options.data){
-                if (options.data.hasOwnProperty(p)) {
-                    var key = encodeURIComponent(p);
-                    var value = encodeURIComponent(options.data[p]);
-                    keyValuePairs.push(key + '=' + value);
-                }
-            }
-            queryString = keyValuePairs.join('&');
-            requestURL += queryString;
-        }
-    }
-
-    // 回调操作
-    xhr.onreadystatechange = function(){
-        if (xhr.readyState == 4) {
-            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
-                options.onsuccess(xhr.responseText);
-            } else {
-                if (options.onfail) {
-                    options.onfail();
-                } else {
-                    alert('Sorry, your request is unsuccessful:' + xhr.statusText);
-                }
-            }
-        }
-    }
-
-    // 发起请求
-    if (method == 'get') {
-        xhr.open(method, requestURL, true);
-        xhr.send();
-    } else {
-        xhr.open(method, url, true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send(queryString);
-    }
-
-}
 
 var login_panel_cancel = document.querySelector("#login_panel_cancel");
 var video_panel_cancel = document.querySelector("#video_panel_cancel");
@@ -275,23 +372,6 @@ submit.addEventListener('click', function(){
     }
 },false)
 
-// 打乱数组
-function shuffle(arr){
-    var curIndex = arr.length;
-    var tmpValue;
-    var randomIndex;
-    var resultArr = [];
-
-    while (curIndex != 0) {
-        randomIndex = Math.floor(Math.random() * curIndex);
-        curIndex--;
-        tmpValue = arr[curIndex];
-        arr[curIndex] = arr[randomIndex];
-        arr[randomIndex] = tmpValue;
-    }
-
-    return arr;
-}
 
 // Ajax动态加载最热排行模块
 var getHotList = (function(){
@@ -323,84 +403,7 @@ var getHotList = (function(){
     ajax(options);
 })();
 
-// 分页导航生成器
-var createPageNav = function(startPageIndex, currentItemIndex, size){
-    var pageNav_btn = document.querySelector('#pageNav_btn');
-    var last_page_btn_tmpl = '<li class="last_page"><</li>';
-    var next_page_btn_tmpl = '<li class="next_page">></li>';
-    var pageNav_items = '';
-    size = startPageIndex + size > totalPageCount? totalPageCount - startPageIndex + 1 : 8;
 
-    pageNav_items += last_page_btn_tmpl;
-    for (var i = 0; i < size; i++) {
-        var pageIndexValue = startPageIndex + i;
-        pageNav_items += '<li class="pageNav_item">' + pageIndexValue + '</li>';
-    }
-    pageNav_items += next_page_btn_tmpl;
-    pageNav_btn.innerHTML = pageNav_items;
-    var pageNav_item = pageNav_btn.querySelectorAll(".pageNav_item");
-    var len = pageNav_item.length;
-    var targetItem = pageNav_item[currentItemIndex] ? pageNav_item[currentItemIndex] : pageNav_item[len - 1];
-    addClass(targetItem, 'active');
-}
-
-/*
-Ajax加载课程列表方法
-参数说明：
-pageNo：             请求页数
-psize：              每页返回总数
-type：               课程类型
-startPageIndex：     可选参数，位于第一个分页号的页数
-currentPageIndex：   可选参数，动态生成分页导航后处于active状态的分页号页数
-*/
-var totalPageCount;
-var getCourseList = function(pageNo, psize, type, startPageIndex, currentPageIndex){
-    var ajaxOnsuccess = function(rText){
-        var courseLists = [];
-        var lenOfItems = 20;
-        var ulOfCourse = document.querySelector("#course_list");
-
-        courseLists = JSON.parse(rText);
-        var segment = '';
-
-        for (i = 0; i < lenOfItems ; i++) {
-            segment +=
-            '<li class="course_list_item">\
-                <div class="course_img_wrapper">\
-                    <img src=' + courseLists.list[i].bigPhotoUrl + '>\
-                </div>\
-                <div class="course_details">\
-                    <h4 class="course_name">' + courseLists.list[i].name + '</h4>\
-                    <h4 class="course_provider">' + courseLists.list[i].provider + '</h4>\
-                    <div class="course_num_wrapper">' + courseLists.list[i].learnerCount + '</div>\
-                    <h4 class="course_price"> ￥ ' + courseLists.list[i].price + '</h4>\
-                </div>\
-            </li>';
-        }
-        ulOfCourse.innerHTML = segment;
-        var currentIndex;
-        if (typeof currentPageIndex != 'undefined') {
-            currentIndex = currentPageIndex;
-        } else {
-            currentIndex = pageNo - 1;
-        }
-        createPageNav(startPageIndex, currentIndex, 8);
-        totalPageCount = courseLists.pagination.totlePageCount;
-    };
-
-    var options = {
-        url: "http://study.163.com/webDev/couresByCategory.htm",
-        type: 'get',
-        data: {
-            pageNo: pageNo,
-            psize: psize,
-            type: type
-        },
-        onsuccess: ajaxOnsuccess
-    }
-
-    ajax(options);
-};
 getCourseList(1, 20, 10, 1);
 
 // 分页器切换模块
