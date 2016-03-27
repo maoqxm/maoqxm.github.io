@@ -1,4 +1,5 @@
-// banner
+// 工具函数
+
 // 根据实际页面动态生成容器高度
 function bannerHeight(){
     var img = imgArr[0];
@@ -7,8 +8,12 @@ function bannerHeight(){
 }
 // 判断是否有cls类
 function hasClass(obj, cls){
-    var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-    return obj.className.match(reg);
+    var fullClass = obj.className.split(' ');
+    if (fullClass.indexOf(cls) != -1) {
+        return true;
+    } else {
+        return false;
+    }
 }
 // 增加cls类
 function addClass(obj, cls){
@@ -18,16 +23,57 @@ function addClass(obj, cls){
 }
 // 移除cls类
 function removeClass(obj, cls){
-    var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-    obj.className = obj.className.replace(reg, ''); // 这里有个小问题就是 如果是"aa bb cc".replace(" bb ", '')这种情况就会导致aa和cc之间没有空格
+    var fullClass = obj.className.split(' ');
+    var clsIndex = fullClass.indexOf(cls);
+    fullClass.splice(clsIndex, 1);  // 删除cls
+    obj.className = fullClass.join(' ');
 }
+// 设置cookie
+function setCookie (name, value, expires, path, domain, secure){
+    var cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+    if (expires){
+        var today = new Date();
+        today.setDate(today.getDate() + expires);
+        cookie += '; expires=' + today.toUTCString();
+    }
+    if (path)
+        cookie += '; path=' + path;
+    if (domain)
+        cookie += '; domain=' + domain;
+    if (secure)
+        cookie += '; secure=' + secure;
+    document.cookie = cookie;
+}
+// 解析cookie
+function getcookie (){
+    var cookie = {};
+    var all = document.cookie;
+    if (all === '')
+        return cookie;
+    var list = all.split('; ');
+    for (var i = 0; i < list.length; i++) {
+        var item = list[i];
+        var p = item.indexOf('=');
+        var name = item.substring(0, p);
+        name = decodeURIComponent(name);
+        var value = item.substring(p + 1);
+        value = decodeURIComponent(value);
+        cookie[name] = value;
+    }
+    return cookie;
+}
+
+// 兼容
+
+// banner
+
 // 改变图片和小圆点
 function changeTo(num){
-    var curImg = document.getElementsByClassName('show')[0];
+    var curImg = document.querySelectorAll('.show')[0];
     var tarImg = imgArr[num];
     removeClass(curImg, 'show');
     addClass(tarImg, 'show');
-    var curIndex = document.getElementsByClassName('active')[0];
+    var curIndex = document.querySelectorAll('.active')[0];
     var tarIndex = indexArr[num];
     removeClass(curIndex, 'active');
     addClass(tarIndex, 'active');
@@ -48,10 +94,10 @@ function stop(){
     clearInterval(autoChange);
 }
 
-var banner = document.getElementById('banner');
-var imgArr = document.getElementById('list').getElementsByTagName('li');
+var banner = document.querySelector('#banner');
+var imgArr = document.querySelector('#list').querySelectorAll('li');
 var imgLen = imgArr.length;
-var indexArr = document.getElementById('pointer').getElementsByTagName('li');
+var indexArr = document.querySelector('#pointer').querySelectorAll('li');
 var curIndex = 0;
 var autoChange = setInterval(function(){
     if (curIndex < imgLen - 1){
@@ -81,48 +127,15 @@ var autoChange = setInterval(function(){
 
 //cookie
 
-// 设置cookie
-function setCookie (name, value, expires, path, domain, secure){
-    var cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
-    if (expires){
-        var today = new Date();
-        today.setDate(today.getDate() + expires);
-        cookie += '; expires=' + today.toGMTString();
-    }
-    if (path)
-        cookie += '; path=' + path;
-    if (domain)
-        cookie += '; domain=' + domain;
-    if (secure)
-        cookie += '; secure=' + secure;
-    document.cookie = cookie;
-}
-// 解析cookie
-function getcookie (){
-    var cookie = {};
-    var all = document.cookie;
-    if (all === '')
-        return cookie;
-    var list = all.split('; ');
-    for (var i = 0; i < list.length; i++) {
-        var item = list[i];
-        var p = item.indexOf('=');
-        var name = item.substring(0, p);
-        name = decodeURIComponent(name);
-        var value = item.substring(p + 1);
-        value = decodeURIComponent(value);
-        cookie[name] = value;
-    }
-    return cookie;
-}
+
 // 点击不再提醒后设置本地cookie
-var noRemind = document.getElementById("tip_noremind");
+var noRemind = document.querySelector("#tip_noremind");
 noRemind.addEventListener('click', function(){
     setCookie("noRemind", "1", 365);
     tip.style.display = "none";
 }, false)
 // 查询是否已有noRemind的cookie
-var tip = document.getElementById("tip");
+var tip = document.querySelector("#tip");
 var mycookie = getcookie();
 if (mycookie.noRemind) {
     tip.style.display = "none";
@@ -192,15 +205,15 @@ var ajax = function(options){
 
 }
 
-var login_panel_cancel = document.getElementById("login_panel_cancel");
-var video_panel_cancel = document.getElementById("video_panel_cancel");
-var videoMask = document.getElementById("videoMask");
-var video_thumbnail = document.getElementById("video_thumbnail");
-var login = document.getElementById("login");
-var focus_btn = document.getElementById("focus_btn");
-var focused_btn = document.getElementById("focused_btn");
-var focused_btn_cancel = document.getElementById("focused_btn_cancel");
-var submit = document.getElementById("submit");
+var login_panel_cancel = document.querySelector("#login_panel_cancel");
+var video_panel_cancel = document.querySelector("#video_panel_cancel");
+var videoMask = document.querySelector("#videoMask");
+var video_thumbnail = document.querySelector("#video_thumbnail");
+var login = document.querySelector("#login");
+var focus_btn = document.querySelector("#focus_btn");
+var focused_btn = document.querySelector("#focused_btn");
+var focused_btn_cancel = document.querySelector("#focused_btn_cancel");
+var submit = document.querySelector("#submit");
 // 关注成功操作
  function successFollow(){
     focus_btn.style.display = "none";
@@ -235,8 +248,8 @@ video_thumbnail.addEventListener('click', function(){
 }, false);
 // 登陆框提交监听
 submit.addEventListener('click', function(){
-    var account = document.getElementById("account").value;
-    var password = document.getElementById("password").value;
+    var account = document.querySelector("#account").value;
+    var password = document.querySelector("#password").value;
     if (!account || !password) {
         alert("请正确填写账号或密码");
     } else {
@@ -285,7 +298,7 @@ var getHotList = (function(){
     var ajaxOnsuccess = function(rText){
         var hotLists = [];
         var lenOfItems = 10;
-        var ulOfHot = document.getElementById("hot_list");
+        var ulOfHot = document.querySelector("#hot_list");
 
         hotLists = shuffle(JSON.parse(rText));
         var segment = '';
@@ -312,7 +325,7 @@ var getHotList = (function(){
 
 // 分页导航生成器
 var createPageNav = function(startPageIndex, currentItemIndex, size){
-    var pageNav_btn = document.getElementById('pageNav_btn');
+    var pageNav_btn = document.querySelector('#pageNav_btn');
     var last_page_btn_tmpl = '<li class="last_page"><</li>';
     var next_page_btn_tmpl = '<li class="next_page">></li>';
     var pageNav_items = '';
@@ -325,7 +338,7 @@ var createPageNav = function(startPageIndex, currentItemIndex, size){
     }
     pageNav_items += next_page_btn_tmpl;
     pageNav_btn.innerHTML = pageNav_items;
-    var pageNav_item = pageNav_btn.getElementsByClassName("pageNav_item");
+    var pageNav_item = pageNav_btn.querySelectorAll(".pageNav_item");
     var len = pageNav_item.length;
     var targetItem = pageNav_item[currentItemIndex] ? pageNav_item[currentItemIndex] : pageNav_item[len - 1];
     addClass(targetItem, 'active');
@@ -345,7 +358,7 @@ var getCourseList = function(pageNo, psize, type, startPageIndex, currentPageInd
     var ajaxOnsuccess = function(rText){
         var courseLists = [];
         var lenOfItems = 20;
-        var ulOfCourse = document.getElementById("course_list");
+        var ulOfCourse = document.querySelector("#course_list");
 
         courseLists = JSON.parse(rText);
         var segment = '';
@@ -392,14 +405,14 @@ getCourseList(1, 20, 10, 1);
 
 // 分页器切换模块
 var pageNavSwitch = (function(){
-    var pageNav_btn = document.getElementById("pageNav_btn");
+    var pageNav_btn = document.querySelector("#pageNav_btn");
     pageNav_btn.addEventListener('click', function(e){
         var targetIndex = e.target.innerHTML;
-        var pageNav_item = pageNav_btn.getElementsByClassName("pageNav_item");
+        var pageNav_item = pageNav_btn.querySelectorAll(".pageNav_item");
         var currentStartPageIndex = parseInt(pageNav_item[0].innerHTML);
         var currentEndPageIndex = parseInt(pageNav_item[pageNav_item.length - 1].innerHTML);
-        var currentType = document.getElementById("tab_btn").getElementsByClassName("active")[0].dataset.type;
-        var currentPageIndex = parseInt(pageNav_btn.getElementsByClassName("active")[0].innerHTML);
+        var currentType = document.querySelector("#tab_btn").querySelectorAll(".active")[0].dataset.type;
+        var currentPageIndex = parseInt(pageNav_btn.querySelectorAll(".active")[0].innerHTML);
 
         if (hasClass(e.target, 'pageNav_item')) {
             getCourseList(targetIndex, 20, currentType, currentStartPageIndex, targetIndex % 8 - 1 == -1 ? 7 : targetIndex % 8 - 1);
@@ -420,8 +433,8 @@ var pageNavSwitch = (function(){
 
 // Tab切换模块
 var tabSwitch = (function(){
-    var tab_btn = document.getElementById("tab_btn");
-    var tab_items = tab_btn.getElementsByClassName("tab");
+    var tab_btn = document.querySelector("#tab_btn");
+    var tab_items = tab_btn.querySelectorAll(".tab");
     var len = tab_items.length;
     var currentTabIndex;
 
