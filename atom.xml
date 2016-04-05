@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-05T14:41:34.813Z</updated>
+  <updated>2016-04-05T15:53:07.163Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://yoursite.com/2016/04/05/jQuery%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/"/>
     <id>http://yoursite.com/2016/04/05/jQuery基础操作整理/</id>
     <published>2016-04-05T14:26:58.000Z</published>
-    <updated>2016-04-05T14:41:34.813Z</updated>
+    <updated>2016-04-05T15:53:07.163Z</updated>
     
     <content type="html">&lt;pre&gt;&lt;code&gt;这是根据慕课网的jQuery课程整理的文章。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;jQuery基础选择器&lt;br&gt;    jQuery的选择器都是以$符号开头，基本和querySelector选择器很像。&lt;/p&gt;
-&lt;ol&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;jQuery基础选择器&quot;&gt;&lt;a href=&quot;#jQuery基础选择器&quot; class=&quot;headerlink&quot; title=&quot;jQuery基础选择器&quot;&gt;&lt;/a&gt;jQuery基础选择器&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;jQuery的选择器都是以$符号开头，基本和querySelector选择器很像。
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
 &lt;li&gt;$(‘#id’)&lt;/li&gt;
 &lt;li&gt;$(“element”)&lt;/li&gt;
 &lt;li&gt;$(“.class”)&lt;/li&gt;
@@ -35,8 +35,8 @@
 &lt;li&gt;$(“prev + next”)&lt;/li&gt;
 &lt;li&gt;$(“prev ~ sibling”)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;jQuery过滤性选择器&lt;br&gt;    类似于伪类的方法&lt;/p&gt;
-&lt;ol&gt;
+&lt;h2 id=&quot;jQuery过滤性选择器&quot;&gt;&lt;a href=&quot;#jQuery过滤性选择器&quot; class=&quot;headerlink&quot; title=&quot;jQuery过滤性选择器&quot;&gt;&lt;/a&gt;jQuery过滤性选择器&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;类似于伪类的方法
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
 &lt;li&gt;$(“:first”)&lt;/li&gt;
 &lt;li&gt;$(“:eq(index)”) // start at 0&lt;/li&gt;
 &lt;li&gt;$(“:contains(‘text’)”)&lt;/li&gt;
@@ -49,8 +49,8 @@
 &lt;li&gt;$(“:first-child”)&lt;/li&gt;
 &lt;li&gt;$(“:last-child”)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;jQuery表单选择器&lt;br&gt;    全部基于表单&lt;/p&gt;
-&lt;ol&gt;
+&lt;h2 id=&quot;jQuery表单选择器&quot;&gt;&lt;a href=&quot;#jQuery表单选择器&quot; class=&quot;headerlink&quot; title=&quot;jQuery表单选择器&quot;&gt;&lt;/a&gt;jQuery表单选择器&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;全部基于表单
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
 &lt;li&gt;$(“ :input”) // 获取全部表单元素，注意前面有空格&lt;/li&gt;
 &lt;li&gt;$(“ :text”)   // 获取单行文本输入框元素&lt;/li&gt;
 &lt;li&gt;$(“ :password”)&lt;/li&gt;
@@ -62,8 +62,7 @@
 &lt;li&gt;$(“ :checked”) // 与元素之间没有空格 如$(“form input:checked”)`&lt;/li&gt;
 &lt;li&gt;$(“ :selected”) // as upper&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;jQuery操作DOM元素&lt;/p&gt;
-&lt;ol&gt;
+&lt;h2 id=&quot;jQuery操作DOM元素&quot;&gt;&lt;a href=&quot;#jQuery操作DOM元素&quot; class=&quot;headerlink&quot; title=&quot;jQuery操作DOM元素&quot;&gt;&lt;/a&gt;jQuery操作DOM元素&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;使用&lt;strong&gt;attr()&lt;/strong&gt;方法控制元素属性&lt;pre&gt;&lt;code&gt;attr(属性名， (属性值))
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;使用 &lt;strong&gt;html()&lt;/strong&gt; 和 &lt;strong&gt;text()&lt;/strong&gt; 方法操作元素内容&lt;pre&gt;&lt;code&gt;html()可以获取原文的格式代码（如同innerHTML）
@@ -91,16 +90,12 @@ $(selector).wrapInner(wrapper)
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;使用&lt;strong&gt;remove()&lt;/strong&gt; 和 &lt;strong&gt;empty()&lt;/strong&gt;方法删除元素，remove()方法删除所选元素本身和子元素，可通过过滤参数指定要删除的元素，而empty()方法只能删除所选元素的子元素&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;To Be Continued.&lt;/p&gt;
-</content>
+&lt;h2 id=&quot;To-Be-Continued&quot;&gt;&lt;a href=&quot;#To-Be-Continued&quot; class=&quot;headerlink&quot; title=&quot;To Be Continued.&quot;&gt;&lt;/a&gt;To Be Continued.&lt;/h2&gt;</content>
     
     <summary type="html">
     
       &lt;pre&gt;&lt;code&gt;这是根据慕课网的jQuery课程整理的文章。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;jQuery基础选择器&lt;br&gt;    jQuery的选择器都是以$符号开头，基本和querySelector选择器很像。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;$(‘#id’)&lt;/li&gt;
-&lt;l
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;jQuery基础选择器&quot;&gt;&lt;a href=&quot;#jQuery基础选择器&quot; class=&quot;headerlink&quot; title=&quot;jQuery基础选择器&quot;&gt;&lt;/a&gt;jQuery
     
     </summary>
     
