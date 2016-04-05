@@ -1,19 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>毛球的个人博客</title>
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-04T14:55:52.479Z</updated>
+  <updated>2016-04-05T03:21:24.848Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>毛球</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hello</title>
+    <link href="http://yoursite.com/2016/04/05/hello/"/>
+    <id>http://yoursite.com/2016/04/05/hello/</id>
+    <published>2016-04-05T03:20:48.000Z</published>
+    <updated>2016-04-05T03:21:24.848Z</updated>
+    
+    <content type="html">&lt;p&gt;Hexo test&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hexo test&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="hello" scheme="http://yoursite.com/tags/hello/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
