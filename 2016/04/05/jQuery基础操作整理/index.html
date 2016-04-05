@@ -46,8 +46,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="毛球的个人博客" type="application/atom+xml" />
 
@@ -89,7 +87,7 @@ $(“ance desc”)
 $(“parent &amp;gt; child”)
 $(“prev + next”)
 $(“p">
-<meta property="og:updated_time" content="2016-04-05T15:53:07.163Z">
+<meta property="og:updated_time" content="2016-04-05T16:45:15.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery基础操作整理">
 <meta name="twitter:description" content="这是根据慕课网的jQuery课程整理的文章。
@@ -309,16 +307,16 @@ $(“p">
 </ol>
 <h2 id="jQuery表单选择器"><a href="#jQuery表单选择器" class="headerlink" title="jQuery表单选择器"></a>jQuery表单选择器</h2><pre><code>全部基于表单
 </code></pre><ol>
-<li>$(“ :input”) // 获取全部表单元素，注意前面有空格</li>
-<li>$(“ :text”)   // 获取单行文本输入框元素</li>
+<li>$(“ :input”) <code>// 获取全部表单元素，注意前面有空格</code></li>
+<li>$(“ :text”)  <code>// 获取单行文本输入框元素</code></li>
 <li>$(“ :password”)</li>
 <li>$(“ :radio”)</li>
 <li>$(“ :checkbox”)</li>
-<li>$(“ :submit”) // 提取对象：button按钮以及type=submit的input</li>
-<li>$(“ :image”) // 只能提取到type为image的input</li>
-<li>$(“ :button”) // 提取对象：普通button按钮以及type=button的input</li>
-<li>$(“ :checked”) // 与元素之间没有空格 如$(“form input:checked”)`</li>
-<li>$(“ :selected”) // as upper</li>
+<li>$(“ :submit”) <code>// 提取对象：button按钮以及type=submit的input</code></li>
+<li>$(“ :image”) <code>// 只能提取到type为image的input</code></li>
+<li>$(“ :button”) <code>// 提取对象：普通button按钮以及type=button的input</code></li>
+<li>$(“ :checked”) <code>// 与元素之间没有空格 如$(&quot;form input:checked&quot;)</code></li>
+<li>$(“ :selected”) <code>// as upper</code></li>
 </ol>
 <h2 id="jQuery操作DOM元素"><a href="#jQuery操作DOM元素" class="headerlink" title="jQuery操作DOM元素"></a>jQuery操作DOM元素</h2><ol>
 <li>使用<strong>attr()</strong>方法控制元素属性<pre><code>attr(属性名， (属性值))
@@ -326,7 +324,7 @@ $(“p">
 <li>使用 <strong>html()</strong> 和 <strong>text()</strong> 方法操作元素内容<pre><code>html()可以获取原文的格式代码（如同innerHTML）
 </code></pre></li>
 <li><p>使用 <strong>addClass()</strong> 和 <strong>css()</strong> 可以方便地操作元素样式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#content&quot;).css(&#123;&quot;background-color&quot;:&quot;blue&quot;, &quot;color&quot;:&quot;white&quot;&#125;); /* use JSON format */</span><br><span class="line"></span><br><span class="line">$(&quot;#content&quot;).addClass(&quot;blue white&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#content"</span>).css(&#123;<span class="string">"background-color"</span>:<span class="string">"blue"</span>, <span class="string">"color"</span>:<span class="string">"white"</span>&#125;); <span class="comment">/* use JSON format */</span></span><br><span class="line">$(<span class="string">"#content"</span>).addClass(<span class="string">"blue white"</span>)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用<strong>removeAttr(name)</strong> 和 <strong>removeClass(class)</strong>分别可以实现移除元素的属性和样式的功能</p>
 </li>
@@ -336,12 +334,13 @@ $(“p">
 <li>使用<strong>before()</strong> 和 <strong>after()</strong>在元素前后插入内容<pre><code>$(selector).before(content)
 $(selector).after(content)
 </code></pre></li>
-<li>使用<strong>clone()</strong>方法复制元素<pre><code>$(selector).clone()`
+<li>使用<strong>clone()</strong>方法复制元素<pre><code>$(selector).clone()
 </code></pre></li>
-<li>使用<strong>replaceWith()</strong> 和 <strong>replaceAll()</strong>方法替换元素或元素中的内容，但二者的位置不同<pre><code>$(selector).replaceWith()`
-$(content).replaceAll(selector)
-</code></pre></li>
-<li>使用<strong>wrap()</strong> 和 <strong>wrapInner()</strong>方法包裹元素和内容，前者用于包裹元素本身，后者用于包裹元素中的内容<pre><code>$(selector).wrap(wrapper)
+<li><p>使用<strong>replaceWith()</strong> 和 <strong>replaceAll()</strong>方法替换元素或元素中的内容，但二者的位置不同</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(selector).replaceWith()</span><br><span class="line">$(content).replaceAll(selector)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<strong>wrap()</strong> 和 <strong>wrapInner()</strong>方法包裹元素和内容，前者用于包裹元素本身，后者用于包裹元素中的内容</p>
+<pre><code>$(selector).wrap(wrapper)
 $(selector).wrapInner(wrapper)
 </code></pre></li>
 <li>使用<strong>each()</strong>方法遍历元素<pre><code>$(selector).each(function(index))
