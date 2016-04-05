@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-05T13:57:02.482Z</updated>
+  <updated>2016-04-05T14:41:34.813Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,102 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jQuery基础操作整理</title>
+    <link href="http://yoursite.com/2016/04/05/jQuery%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/"/>
+    <id>http://yoursite.com/2016/04/05/jQuery基础操作整理/</id>
+    <published>2016-04-05T14:26:58.000Z</published>
+    <updated>2016-04-05T14:41:34.813Z</updated>
+    
+    <content type="html">&lt;pre&gt;&lt;code&gt;这是根据慕课网的jQuery课程整理的文章。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;jQuery基础选择器&lt;br&gt;    jQuery的选择器都是以$符号开头，基本和querySelector选择器很像。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$(‘#id’)&lt;/li&gt;
+&lt;li&gt;$(“element”)&lt;/li&gt;
+&lt;li&gt;$(“.class”)&lt;/li&gt;
+&lt;li&gt;$(*)&lt;/li&gt;
+&lt;li&gt;$(“sele1, sele2, seleN”)&lt;/li&gt;
+&lt;li&gt;$(“ance desc”)&lt;/li&gt;
+&lt;li&gt;$(“parent &amp;gt; child”)&lt;/li&gt;
+&lt;li&gt;$(“prev + next”)&lt;/li&gt;
+&lt;li&gt;$(“prev ~ sibling”)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;jQuery过滤性选择器&lt;br&gt;    类似于伪类的方法&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$(“:first”)&lt;/li&gt;
+&lt;li&gt;$(“:eq(index)”) // start at 0&lt;/li&gt;
+&lt;li&gt;$(“:contains(‘text’)”)&lt;/li&gt;
+&lt;li&gt;$(“:has(selector)”)&lt;/li&gt;
+&lt;li&gt;$(“:hidden”)&lt;/li&gt;
+&lt;li&gt;$(“:visible”)&lt;/li&gt;
+&lt;li&gt;$(“[attribute=value]”)&lt;/li&gt;
+&lt;li&gt;$(“[attribute!=value]”)&lt;/li&gt;
+&lt;li&gt;$(“[attribute*=value]”)&lt;/li&gt;
+&lt;li&gt;$(“:first-child”)&lt;/li&gt;
+&lt;li&gt;$(“:last-child”)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;jQuery表单选择器&lt;br&gt;    全部基于表单&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$(“ :input”) // 获取全部表单元素，注意前面有空格&lt;/li&gt;
+&lt;li&gt;$(“ :text”)   // 获取单行文本输入框元素&lt;/li&gt;
+&lt;li&gt;$(“ :password”)&lt;/li&gt;
+&lt;li&gt;$(“ :radio”)&lt;/li&gt;
+&lt;li&gt;$(“ :checkbox”)&lt;/li&gt;
+&lt;li&gt;$(“ :submit”) // 提取对象：button按钮以及type=submit的input&lt;/li&gt;
+&lt;li&gt;$(“ :image”) // 只能提取到type为image的input&lt;/li&gt;
+&lt;li&gt;$(“ :button”) // 提取对象：普通button按钮以及type=button的input&lt;/li&gt;
+&lt;li&gt;$(“ :checked”) // 与元素之间没有空格 如$(“form input:checked”)`&lt;/li&gt;
+&lt;li&gt;$(“ :selected”) // as upper&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;jQuery操作DOM元素&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用&lt;strong&gt;attr()&lt;/strong&gt;方法控制元素属性&lt;pre&gt;&lt;code&gt;attr(属性名， (属性值))
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;使用 &lt;strong&gt;html()&lt;/strong&gt; 和 &lt;strong&gt;text()&lt;/strong&gt; 方法操作元素内容&lt;pre&gt;&lt;code&gt;html()可以获取原文的格式代码（如同innerHTML）
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用 &lt;strong&gt;addClass()&lt;/strong&gt; 和 &lt;strong&gt;css()&lt;/strong&gt; 可以方便地操作元素样式&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$(&amp;quot;#content&amp;quot;).css(&amp;#123;&amp;quot;background-color&amp;quot;:&amp;quot;blue&amp;quot;, &amp;quot;color&amp;quot;:&amp;quot;white&amp;quot;&amp;#125;); /* use JSON format */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&amp;quot;#content&amp;quot;).addClass(&amp;quot;blue white&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用&lt;strong&gt;removeAttr(name)&lt;/strong&gt; 和 &lt;strong&gt;removeClass(class)&lt;/strong&gt;分别可以实现移除元素的属性和样式的功能&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;append()&lt;/strong&gt;方法向元素内追加内容&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;appendTo()&lt;/strong&gt;方法向被选元素内插入内容&lt;pre&gt;&lt;code&gt;$(content).appendTo(selector)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;before()&lt;/strong&gt; 和 &lt;strong&gt;after()&lt;/strong&gt;在元素前后插入内容&lt;pre&gt;&lt;code&gt;$(selector).before(content)
+$(selector).after(content)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;clone()&lt;/strong&gt;方法复制元素&lt;pre&gt;&lt;code&gt;$(selector).clone()`
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;replaceWith()&lt;/strong&gt; 和 &lt;strong&gt;replaceAll()&lt;/strong&gt;方法替换元素或元素中的内容，但二者的位置不同&lt;pre&gt;&lt;code&gt;$(selector).replaceWith()`
+$(content).replaceAll(selector)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;wrap()&lt;/strong&gt; 和 &lt;strong&gt;wrapInner()&lt;/strong&gt;方法包裹元素和内容，前者用于包裹元素本身，后者用于包裹元素中的内容&lt;pre&gt;&lt;code&gt;$(selector).wrap(wrapper)
+$(selector).wrapInner(wrapper)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;each()&lt;/strong&gt;方法遍历元素&lt;pre&gt;&lt;code&gt;$(selector).each(function(index))
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;remove()&lt;/strong&gt; 和 &lt;strong&gt;empty()&lt;/strong&gt;方法删除元素，remove()方法删除所选元素本身和子元素，可通过过滤参数指定要删除的元素，而empty()方法只能删除所选元素的子元素&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To Be Continued.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;这是根据慕课网的jQuery课程整理的文章。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;jQuery基础选择器&lt;br&gt;    jQuery的选择器都是以$符号开头，基本和querySelector选择器很像。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$(‘#id’)&lt;/li&gt;
+&lt;l
+    
+    </summary>
+    
+    
+      <category term="Javascript" scheme="http://yoursite.com/tags/Javascript/"/>
+    
+      <category term="jQuery" scheme="http://yoursite.com/tags/jQuery/"/>
+    
+  </entry>
   
   <entry>
     <title>JS中的OOP</title>
