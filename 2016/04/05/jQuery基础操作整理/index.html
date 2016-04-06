@@ -87,7 +87,7 @@ $(“ance desc”)
 $(“parent &amp;gt; child”)
 $(“prev + next”)
 $(“p">
-<meta property="og:updated_time" content="2016-04-05T17:02:47.556Z">
+<meta property="og:updated_time" content="2016-04-06T01:05:04.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery基础操作整理">
 <meta name="twitter:description" content="这是根据慕课网的jQuery课程整理的文章。
@@ -348,6 +348,21 @@ $(selector).wrapInner(wrapper)
 </code></pre></li>
 <li>使用<strong>remove()</strong> 和 <strong>empty()</strong>方法删除元素，remove()方法删除所选元素本身和子元素，可通过过滤参数指定要删除的元素，而empty()方法只能删除所选元素的子元素</li>
 </ol>
+<h2 id="jQuery事件与应用"><a href="#jQuery事件与应用" class="headerlink" title="jQuery事件与应用"></a>jQuery事件与应用</h2><ol>
+<li><p>页面加载时触发<strong>ready()</strong>事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<strong>bind()</strong>方法绑定元素的事件<br> <code>$(selector).bind(event1 event2, [data] fuction)</code></p>
+</li>
+<li>使用<strong>hover()</strong>方法切换事件<br> <code>$(selector).hover(over, out)</code></li>
+<li>使用<strong>toggle()</strong>方法绑定多个函数<br> <code>$(selector).toggle(fun1(), fun2(), ...) \\ 可以用来控制元素的显示/隐藏</code></li>
+<li>使用<strong>unbind()</strong>方法移除元素绑定的事件<br> <code>$(selector).unbind(event, fun)</code></li>
+<li>使用<strong>one()</strong>方法绑定元素的一次性事件<br> <code>$(selector).one(event, [data], fun)</code></li>
+<li>调用<strong>trigger()</strong>方法手动触发指定事件<br> <code>$(selector).trigger(event)</code></li>
+<li>文本框的<strong>focus</strong>和<strong>blur</strong>事件<br> <code>$(selector).bind(&quot;focus&quot;, fun)</code></li>
+<li>下拉列表的<strong>change</strong>事件<br> <code>$(selector).bind(&quot;change&quot;, fun)</code></li>
+<li>调用<strong>live()</strong>方法绑定元素的事件<br><code>$(selector).live(event, [data], fun) // 已不建议使用</code></li>
+</ol>
 <h2 id="To-Be-Continued"><a href="#To-Be-Continued" class="headerlink" title="To Be Continued."></a>To Be Continued.</h2>
       
     </div>
@@ -501,7 +516,7 @@ $(selector).wrapInner(wrapper)
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery基础选择器"><span class="nav-number">1.</span> <span class="nav-text">jQuery基础选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery过滤性选择器"><span class="nav-number">2.</span> <span class="nav-text">jQuery过滤性选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery表单选择器"><span class="nav-number">3.</span> <span class="nav-text">jQuery表单选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery操作DOM元素"><span class="nav-number">4.</span> <span class="nav-text">jQuery操作DOM元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#To-Be-Continued"><span class="nav-number">5.</span> <span class="nav-text">To Be Continued.</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery基础选择器"><span class="nav-number">1.</span> <span class="nav-text">jQuery基础选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery过滤性选择器"><span class="nav-number">2.</span> <span class="nav-text">jQuery过滤性选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery表单选择器"><span class="nav-number">3.</span> <span class="nav-text">jQuery表单选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery操作DOM元素"><span class="nav-number">4.</span> <span class="nav-text">jQuery操作DOM元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery事件与应用"><span class="nav-number">5.</span> <span class="nav-text">jQuery事件与应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#To-Be-Continued"><span class="nav-number">6.</span> <span class="nav-text">To Be Continued.</span></a></li></ol></div>
             
           </div>
         </section>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-05T17:02:47.556Z</updated>
+  <updated>2016-04-06T01:05:04.814Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/04/05/jQuery%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/"/>
     <id>http://yoursite.com/2016/04/05/jQuery基础操作整理/</id>
     <published>2016-04-05T14:26:58.000Z</published>
-    <updated>2016-04-05T17:02:47.556Z</updated>
+    <updated>2016-04-06T01:05:04.814Z</updated>
     
     <content type="html">&lt;pre&gt;&lt;code&gt;这是根据慕课网的jQuery课程整理的文章。
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;jQuery基础选择器&quot;&gt;&lt;a href=&quot;#jQuery基础选择器&quot; class=&quot;headerlink&quot; title=&quot;jQuery基础选择器&quot;&gt;&lt;/a&gt;jQuery基础选择器&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;jQuery的选择器都是以$符号开头，基本和querySelector选择器很像。
@@ -91,6 +91,21 @@ $(selector).wrapInner(wrapper)
 &lt;li&gt;使用&lt;strong&gt;each()&lt;/strong&gt;方法遍历元素&lt;pre&gt;&lt;code&gt;$(selector).each(function(index))
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;使用&lt;strong&gt;remove()&lt;/strong&gt; 和 &lt;strong&gt;empty()&lt;/strong&gt;方法删除元素，remove()方法删除所选元素本身和子元素，可通过过滤参数指定要删除的元素，而empty()方法只能删除所选元素的子元素&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;jQuery事件与应用&quot;&gt;&lt;a href=&quot;#jQuery事件与应用&quot; class=&quot;headerlink&quot; title=&quot;jQuery事件与应用&quot;&gt;&lt;/a&gt;jQuery事件与应用&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;页面加载时触发&lt;strong&gt;ready()&lt;/strong&gt;事件&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;).ready(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 等价于&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用&lt;strong&gt;bind()&lt;/strong&gt;方法绑定元素的事件&lt;br&gt; &lt;code&gt;$(selector).bind(event1 event2, [data] fuction)&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;hover()&lt;/strong&gt;方法切换事件&lt;br&gt; &lt;code&gt;$(selector).hover(over, out)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;toggle()&lt;/strong&gt;方法绑定多个函数&lt;br&gt; &lt;code&gt;$(selector).toggle(fun1(), fun2(), ...) \\ 可以用来控制元素的显示/隐藏&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;unbind()&lt;/strong&gt;方法移除元素绑定的事件&lt;br&gt; &lt;code&gt;$(selector).unbind(event, fun)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;one()&lt;/strong&gt;方法绑定元素的一次性事件&lt;br&gt; &lt;code&gt;$(selector).one(event, [data], fun)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;调用&lt;strong&gt;trigger()&lt;/strong&gt;方法手动触发指定事件&lt;br&gt; &lt;code&gt;$(selector).trigger(event)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;文本框的&lt;strong&gt;focus&lt;/strong&gt;和&lt;strong&gt;blur&lt;/strong&gt;事件&lt;br&gt; &lt;code&gt;$(selector).bind(&amp;quot;focus&amp;quot;, fun)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;下拉列表的&lt;strong&gt;change&lt;/strong&gt;事件&lt;br&gt; &lt;code&gt;$(selector).bind(&amp;quot;change&amp;quot;, fun)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;调用&lt;strong&gt;live()&lt;/strong&gt;方法绑定元素的事件&lt;br&gt;&lt;code&gt;$(selector).live(event, [data], fun) // 已不建议使用&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&quot;To-Be-Continued&quot;&gt;&lt;a href=&quot;#To-Be-Continued&quot; class=&quot;headerlink&quot; title=&quot;To Be Continued.&quot;&gt;&lt;/a&gt;To Be Continued.&lt;/h2&gt;</content>
     
