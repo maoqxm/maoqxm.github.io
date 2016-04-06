@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="jQuery,Javascript," />
+  <meta name="keywords" content="Javascript,jQuery," />
 
 
 
@@ -87,7 +87,7 @@ $(“ance desc”)
 $(“parent &amp;gt; child”)
 $(“prev + next”)
 $(“p">
-<meta property="og:updated_time" content="2016-04-06T14:16:21.268Z">
+<meta property="og:updated_time" content="2016-04-06T14:20:32.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery基础操作整理">
 <meta name="twitter:description" content="这是根据慕课网的jQuery课程整理的文章。
@@ -393,58 +393,38 @@ $(selector).wrapInner(wrapper)
 <li>调用<strong>live()</strong>方法绑定元素的事件<br><code>$(selector).live(event, [data], fun) // 已不建议使用</code></li>
 </ol>
 <h2 id="jQuery动画特效"><a href="#jQuery动画特效" class="headerlink" title="jQuery动画特效"></a>jQuery动画特效</h2><ol>
-<li>调用<strong>show()</strong> 和 <strong>hide()</strong>方法显示和隐藏元素<pre><code>` $(selector).hide(speed, [callback]) `
-` $(selector).show(speed, [callback]) `
-</code></pre></li>
-<li>调用<strong>toggle()</strong>方法实现动画切换效果<pre><code>` $(selector).toggle(speed, [callback]) `
-</code></pre></li>
-<li>使用<strong>slideUp()</strong> 和 <strong>slideDown()</strong>方法的滑动效果<pre><code>` $(selector).slideUp(speed, [callback]) `
-` $(selector).slideDown(speed, [callback]) `
-</code></pre></li>
-<li>使用<strong>slideToggle()</strong>方法实现图片“变脸”效果<pre><code>` $(selector).slideToggle(speed, [callback]) // 用于切换slideUp和slideDown`
-</code></pre></li>
-<li>使用<strong>fadeIn()</strong> 和 <strong>fadeOut()</strong>方法实现淡入淡出效果<pre><code>` $(selector).fadeIn(speed, [callback]) `
-` $(selector).fadeOut(speed, [callback]) `
-</code></pre></li>
-<li>使用<strong>fadeTo()</strong>方法设置淡入淡出效果的不透明度<pre><code>` $(selector).fadeTo(speed, opacity, [callback]) `
-</code></pre></li>
-<li>调用<strong>animate()</strong>方法制作简单的动画效果<pre><code>` $(selector).animate({params}, speed, [callback]) `
-</code></pre></li>
-<li>调用<strong>stop()</strong>方法停止当前所有动画效果<pre><code>` $(selector).stop([clearQueue], [goToEnd]) // 前者表示是否停止正在执行的动画，后者表示是否完成正在执行的动画`
-</code></pre></li>
-<li>调用<strong>delay()</strong>方法延时执行动画效果<pre><code>` $(selector).dalay(duration) // 只延时下一个动画，对当前进行的动画无效`
-</code></pre></li>
+<li>调用<strong>show()</strong> 和 <strong>hide()</strong>方法显示和隐藏元素<br> <code>$(selector).hide(speed, [callback])</code><br> <code>$(selector).show(speed, [callback])</code></li>
+<li>调用<strong>toggle()</strong>方法实现动画切换效果<br> <code>$(selector).toggle(speed, [callback])</code></li>
+<li>使用<strong>slideUp()</strong> 和 <strong>slideDown()</strong>方法的滑动效果<br> <code>$(selector).slideUp(speed, [callback])</code><br> <code>$(selector).slideDown(speed, [callback])</code></li>
+<li>使用<strong>slideToggle()</strong>方法实现图片“变脸”效果<br> <code>$(selector).slideToggle(speed, [callback]) // 用于切换slideUp和slideDown</code></li>
+<li>使用<strong>fadeIn()</strong> 和 <strong>fadeOut()</strong>方法实现淡入淡出效果<br> <code>$(selector).fadeIn(speed, [callback])</code><br> <code>$(selector).fadeOut(speed, [callback])</code></li>
+<li>使用<strong>fadeTo()</strong>方法设置淡入淡出效果的不透明度<br> <code>$(selector).fadeTo(speed, opacity, [callback])</code></li>
+<li>调用<strong>animate()</strong>方法制作简单的动画效果<br> <code>$(selector).animate({params}, speed, [callback])</code></li>
+<li>调用<strong>stop()</strong>方法停止当前所有动画效果<br> <code>$(selector).stop([clearQueue], [goToEnd]) // 前者表示是否停止正在执行的动画，后者表示是否完成正在执行的动画</code></li>
+<li>调用<strong>delay()</strong>方法延时执行动画效果<br> <code>$(selector).dalay(duration) // 只延时下一个动画，对当前进行的动画无效</code></li>
 </ol>
 <h2 id="jQuery实现Ajax应用"><a href="#jQuery实现Ajax应用" class="headerlink" title="jQuery实现Ajax应用"></a>jQuery实现Ajax应用</h2><ol>
 <li><p>使用<strong>load()</strong>方法异步请求数据</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求得到的数据会写入selector中</span></span><br><span class="line">$(<span class="string">"#btnShow"</span>).bind(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> $<span class="keyword">this</span> = $(<span class="keyword">this</span>);</span><br><span class="line">    $(<span class="string">"ul"</span>)</span><br><span class="line">    .html(<span class="string">"&lt;img src='Images/Loading.gif' alt=''/&gt;"</span>)</span><br><span class="line">    .load(<span class="string">'http://www.imooc.com/data/fruit_part.html'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		$<span class="keyword">this</span>.attr(<span class="string">"disabled"</span>, <span class="string">"true"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用<strong>getJSON()</strong>方法异步加载JSON格式数据</p>
-<pre><code>` jQuery.getJSON(url, [data], [callback]) `
-` $.getJSON(url, [data], [callback]) `
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btnShow"</span>).bind(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> $<span class="keyword">this</span> = $(<span class="keyword">this</span>);</span><br><span class="line">    $.getJSON(<span class="string">'http://www.imooc.com/data/sport.json'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">	    $<span class="keyword">this</span>.attr(<span class="string">"disabled"</span>, <span class="string">"true"</span>);</span><br><span class="line">        $.each(data, <span class="function"><span class="keyword">function</span> (<span class="params">index, sport</span>) </span>&#123;</span><br><span class="line">	        <span class="keyword">if</span>(index==<span class="number">3</span>)</span><br><span class="line">	            $(<span class="string">"ul"</span>).append(<span class="string">"&lt;li&gt;"</span> + sport[<span class="string">"name"</span>] + <span class="string">"&lt;/li&gt;"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<li><p>使用<strong>getJSON()</strong>方法异步加载JSON格式数据<br> <code>jQuery.getJSON(url, [data], [callback])</code><br> <code>$.getJSON(url, [data], [callback])</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btnShow"</span>).bind(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> $<span class="keyword">this</span> = $(<span class="keyword">this</span>);</span><br><span class="line">    $.getJSON(<span class="string">'http://www.imooc.com/data/sport.json'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">	    $<span class="keyword">this</span>.attr(<span class="string">"disabled"</span>, <span class="string">"true"</span>);</span><br><span class="line">        $.each(data, <span class="function"><span class="keyword">function</span> (<span class="params">index, sport</span>) </span>&#123;</span><br><span class="line">	        <span class="keyword">if</span>(index==<span class="number">3</span>)</span><br><span class="line">	            $(<span class="string">"ul"</span>).append(<span class="string">"&lt;li&gt;"</span> + sport[<span class="string">"name"</span>] + <span class="string">"&lt;/li&gt;"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用<strong>getScript()</strong>方法异步加载并执行js文件</p>
-<pre><code>` $.getScript(url, [callback]) `
-</code></pre></li>
-<li><p>使用<strong>get()</strong> 以 <strong>GET</strong>方式从服务器获取数据</p>
-<pre><code>` $.get(url, [callback]) `
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btnShow"</span>).bind(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> $<span class="keyword">this</span> = $(<span class="keyword">this</span>);</span><br><span class="line">    $.get(<span class="string">'http://www.imooc.com/data/info_f.php'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">	    $<span class="keyword">this</span>.attr(<span class="string">"disabled"</span>, <span class="string">"true"</span>);</span><br><span class="line">        $(<span class="string">"ul"</span>).append(<span class="string">"&lt;li&gt;我的名字叫："</span> + data.name + <span class="string">"&lt;/li&gt;"</span>);</span><br><span class="line">        $(<span class="string">"ul"</span>).append(<span class="string">"&lt;li&gt;男朋友对我说："</span> + data.say + <span class="string">"&lt;/li&gt;"</span>);</span><br><span class="line">    &#125;, <span class="string">"json"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<li><p>使用<strong>getScript()</strong>方法异步加载并执行js文件<br> <code>$.getScript(url, [callback])</code></p>
 </li>
-<li><p>使用<strong>post()</strong>方法以<strong>POST</strong>方式从服务器发送数据</p>
-<pre><code>` $.post(url, [data], [callback]) `
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btnCheck"</span>).bind(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	$.post(<span class="string">'http://www.imooc.com/data/check_f.php'</span>, &#123;</span><br><span class="line">	    num: $(<span class="string">"#txtNumber"</span>).val()    </span><br><span class="line">    &#125;,              </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">	    $(<span class="string">"ul"</span>).append(<span class="string">"&lt;li&gt;你输入的&lt;b&gt;  "</span></span><br><span class="line">        + $(<span class="string">"#txtNumber"</span>).val() + <span class="string">" &lt;/b&gt;是&lt;b&gt; "</span></span><br><span class="line">        + data + <span class="string">" &lt;/b&gt;&lt;/li&gt;"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<li><p>使用<strong>get()</strong> 以 <strong>GET</strong>方式从服务器获取数据<br> <code>$.get(url, [callback])</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btnShow"</span>).bind(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> $<span class="keyword">this</span> = $(<span class="keyword">this</span>);</span><br><span class="line">    $.get(<span class="string">'http://www.imooc.com/data/info_f.php'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">	    $<span class="keyword">this</span>.attr(<span class="string">"disabled"</span>, <span class="string">"true"</span>);</span><br><span class="line">        $(<span class="string">"ul"</span>).append(<span class="string">"&lt;li&gt;我的名字叫："</span> + data.name + <span class="string">"&lt;/li&gt;"</span>);</span><br><span class="line">        $(<span class="string">"ul"</span>).append(<span class="string">"&lt;li&gt;男朋友对我说："</span> + data.say + <span class="string">"&lt;/li&gt;"</span>);</span><br><span class="line">    &#125;, <span class="string">"json"</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用<strong>serialize()</strong>方法序列化表单元素值</p>
-<pre><code>` $(selector).serialize() `
-</code></pre></li>
-<li><p>使用<strong>ajax()</strong>方法加载服务器数据</p>
-<pre><code>` $.ajax([settings]) `
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btnCheck"</span>).bind(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">	    url: <span class="string">'http://www.imooc.com/data/check.php'</span>,</span><br><span class="line">        data: &#123; num: $(<span class="string">"#txtNumber"</span>).val() &#125;,</span><br><span class="line">        type: <span class="string">'post'</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">	        $(<span class="string">"ul"</span>).append(<span class="string">"&lt;li&gt;你输入的&lt;b&gt;  "</span></span><br><span class="line">            + $(<span class="string">"#txtNumber"</span>).val() + <span class="string">" &lt;/b&gt;是&lt;b&gt; "</span></span><br><span class="line">            + data + <span class="string">" &lt;/b&gt;&lt;/li&gt;"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<li><p>使用<strong>post()</strong>方法以<strong>POST</strong>方式从服务器发送数据<br> <code>$.post(url, [data], [callback])</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btnCheck"</span>).bind(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	$.post(<span class="string">'http://www.imooc.com/data/check_f.php'</span>, &#123;</span><br><span class="line">	    num: $(<span class="string">"#txtNumber"</span>).val()    </span><br><span class="line">    &#125;,              </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">	    $(<span class="string">"ul"</span>).append(<span class="string">"&lt;li&gt;你输入的&lt;b&gt;  "</span></span><br><span class="line">        + $(<span class="string">"#txtNumber"</span>).val() + <span class="string">" &lt;/b&gt;是&lt;b&gt; "</span></span><br><span class="line">        + data + <span class="string">" &lt;/b&gt;&lt;/li&gt;"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用<strong>ajaxSetup()</strong>方法设置全局Ajax默认选项</p>
-<pre><code>` $.ajaxSetup([options]) `
-</code></pre></li>
+<li><p>使用<strong>serialize()</strong>方法序列化表单元素值<br> <code>$(selector).serialize()</code></p>
+</li>
+<li><p>使用<strong>ajax()</strong>方法加载服务器数据<br> <code>$.ajax([settings])</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btnCheck"</span>).bind(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">	    url: <span class="string">'http://www.imooc.com/data/check.php'</span>,</span><br><span class="line">        data: &#123; num: $(<span class="string">"#txtNumber"</span>).val() &#125;,</span><br><span class="line">        type: <span class="string">'post'</span>,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">	        $(<span class="string">"ul"</span>).append(<span class="string">"&lt;li&gt;你输入的&lt;b&gt;  "</span></span><br><span class="line">            + $(<span class="string">"#txtNumber"</span>).val() + <span class="string">" &lt;/b&gt;是&lt;b&gt; "</span></span><br><span class="line">            + data + <span class="string">" &lt;/b&gt;&lt;/li&gt;"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<strong>ajaxSetup()</strong>方法设置全局Ajax默认选项<br> <code>$.ajaxSetup([options])</code></p>
+</li>
 <li>使用<strong>ajaxStart()</strong> 和 <strong>ajaxStop()</strong>方法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ajaxStart() 和 ajaxStop()方法用于在Ajax请求发出前（完成后）触发</span></span><br><span class="line"><span class="comment">// 1.9版本无法直接使用，需要绑定document</span></span><br><span class="line"></span><br><span class="line">$(selector).ajaxStart(<span class="function"><span class="keyword">function</span>(<span class="params"></span>));</span><br><span class="line"><span class="title">$</span>(<span class="params">selector</span>).<span class="title">ajaxStop</span>(<span class="params">function(</span>));</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -468,9 +448,9 @@ $(selector).wrapInner(wrapper)
       
         <div class="post-tags">
           
-            <a href="/tags/jQuery/" rel="tag">#jQuery</a>
-          
             <a href="/tags/Javascript/" rel="tag">#Javascript</a>
+          
+            <a href="/tags/jQuery/" rel="tag">#jQuery</a>
           
         </div>
       
