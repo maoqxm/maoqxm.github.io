@@ -30,6 +30,7 @@
             $.ajax({
                 url: 'http://live.bilibili.com/area/home?area=sing-dance&order=online&cover=1',
                 dataType: 'jsonp',
+                jsonp: 'callback',
                 success: function(data) {
                     console.log(data)
                 },
