@@ -29,7 +29,7 @@
         var getData = function() {
             $.ajax({
                 url: 'http://live.bilibili.com/area/home?area=sing-dance&order=online&cover=1',
-                contentType: 'text/html; charset=UTF-8',
+                contentType: 'application/json; charset=UTF-8',
                 dataType: 'json'
             }).done(function(data) {
                 renderData(data)
