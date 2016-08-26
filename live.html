@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Test</title>
+    <script type="text/javascript" src="/Library/jquery-3.1.0.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        var renderModel = function(model) {
+            var $el = $('<div>')
+            $el.append('<span>' + model.title + '---' + model.uname + '---' + model.online + '</span>')
+            $('body').append($el)
+        }
+
+        var renderData = function(data) {
+            var list = data.data.list
+            $('body').html('')
+            list.forEach(function(up) {
+                var model = {
+                    title: up.title,
+                    uname: up.uname,
+                    online: up.online
+                }
+                renderModel(model)
+            })
+        }
+
+        var getData = function() {
+            $.ajax({
+                url: 'http://live.bilibili.com/area/home?area=sing-dance&order=online&cover=1',
+                contentType: 'text/html; charset=UTF-8',
+                dataType: 'json'
+            }).done(function(data) {
+                renderData(data)
+            })
+        }
+
+        setInterval(getData, 10000)
+    </script>
+</body>
+</html>
